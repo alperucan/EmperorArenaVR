@@ -5,9 +5,18 @@ using UnityEngine.GameFoundation;
 
 public class Equipment : MonoBehaviour
 {
-   public ItemMap Items { get; private set; }
+    public ItemMap Items { get; private set; }
+    [SerializeField] private Transform primaryWeaponParent;
+    private List<GameObject> primaryWeapons = new List<GameObject>();
+    private int currentPrimaryWeaponId = 1;
 
-
+    private void Awake()
+    {
+        foreach(Transform child in primaryWeaponParent) 
+        {
+            primaryWeapons.Add(child.gameObject);
+        }
+    }
     private void Start()
     {
         if(Items == null) 
@@ -25,15 +34,34 @@ public class Equipment : MonoBehaviour
         EventManager.Instance.OnEquip -= Equip;
         EventManager.Instance.OnUnEquip -= UnEquip;
     }
+    public GameObject GetCurrentPrimaryWeapon() 
+    {
+        return currentPrimaryWeaponId != -1 ? primaryWeapons[currentPrimaryWeaponId] : null;
+    }
     private void Equip(InventoryItem inventoryItem) 
     {
         string equipmentType = inventoryItem.definition.GetStaticProperty("equipmentType").AsString();
         Items.Set(equipmentType, inventoryItem);
+        EnablePrimaryWeapon(inventoryItem);
     }
 
     private void UnEquip(InventoryItem inventoryItem) 
     {
         Items.Remove(inventoryItem);
+        DisablePrimaryWeapon();
     
     }
+    private void EnablePrimaryWeapon(InventoryItem inventoryItem) 
+    {
+        int id = primaryWeapons.FindIndex(go => go.name == inventoryItem.definition.displayName);
+        primaryWeapons[id].SetActive(true);
+        currentPrimaryWeaponId = id;
+    }
+    private void DisablePrimaryWeapon() 
+    {
+        primaryWeapons[currentPrimaryWeaponId].SetActive(false);
+        currentPrimaryWeaponId = -1;
+        
+    }
+
 }

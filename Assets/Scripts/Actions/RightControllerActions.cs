@@ -8,9 +8,20 @@ public class RightControllerActions : MonoBehaviour, XRIDefaultInputActions.IXRI
     private XRIDefaultInputActions controls;
     [SerializeField] private Player player;
 
+   /// <summary>
+   /// TODO "Equip a weapon videosunda player.Equipment var ama hatali unutma"
+   /// </summary>
+   /// <param name="context"></param>
     void XRIDefaultInputActions.IXRIRightHandInteractionActions.OnActivate(InputAction.CallbackContext context)
     {
-      
+       // if (context.performed) 
+        //{
+          //  var go = player.Equipment.GetCurrentPrimaryWeapon();
+           // if(go != null) 
+            //{
+              //  go.GetComponent<IActivatable>()?.Activate();
+           // }
+        //}
     }
 
     void XRIDefaultInputActions.IXRIRightHandInteractionActions.OnActivateValue(InputAction.CallbackContext context)
