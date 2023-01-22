@@ -225,6 +225,7 @@ GameObject:
   - component: {fileID: 35243284728172132}
   - component: {fileID: 5345279723809785632}
   - component: {fileID: 8358558284387513228}
+  - component: {fileID: 3894562153677043451}
   m_Layer: 5
   m_Name: Wisdom
   m_TagString: Untagged
@@ -291,6 +292,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3894562153677043451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3452548934604161195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e60bc6616b0a4d51a6111324637e1cc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: {fileID: 7439320776211669192}
+  statName: wisdom
+  button: {fileID: 6884760520837192985}
 --- !u!1 &4037729686975504705
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,6 +392,7 @@ GameObject:
   - component: {fileID: 7721131206551849721}
   - component: {fileID: 3524826685313000946}
   - component: {fileID: 3792935325230748154}
+  - component: {fileID: 8873502964744993530}
   m_Layer: 5
   m_Name: Charisma
   m_TagString: Untagged
@@ -442,6 +459,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8873502964744993530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4296636453375738890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e60bc6616b0a4d51a6111324637e1cc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: {fileID: 3767501646844357028}
+  statName: charisma
+  button: {fileID: 820224101247405448}
 --- !u!1 &4646567795049950114
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,6 +683,7 @@ GameObject:
   - component: {fileID: 4646567795080903621}
   - component: {fileID: 4646567795080903626}
   - component: {fileID: 4646567795080903627}
+  - component: {fileID: 1969790401736682800}
   m_Layer: 5
   m_Name: Magic Attack
   m_TagString: Untagged
@@ -716,6 +749,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1969790401736682800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4646567795080903622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2862bd4ea93240cdad40fb2bb702f8a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: {fileID: 4646567795158757647}
+  statName: magicAttack
 --- !u!1 &4646567795097994261
 GameObject:
   m_ObjectHideFlags: 0
@@ -727,6 +774,7 @@ GameObject:
   - component: {fileID: 4646567795097994260}
   - component: {fileID: 4646567795097994265}
   - component: {fileID: 4646567795097994266}
+  - component: {fileID: 1063099514113290151}
   m_Layer: 5
   m_Name: Dexterity
   m_TagString: Untagged
@@ -793,6 +841,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1063099514113290151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4646567795097994261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e60bc6616b0a4d51a6111324637e1cc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: {fileID: 4646567795220742830}
+  statName: dexterity
+  button: {fileID: 4646567795363047209}
 --- !u!1 &4646567795134791771
 GameObject:
   m_ObjectHideFlags: 0
@@ -1362,6 +1425,7 @@ GameObject:
   - component: {fileID: 4646567795314770109}
   - component: {fileID: 4646567795314769986}
   - component: {fileID: 4646567795314769987}
+  - component: {fileID: 1910533999144625251}
   m_Layer: 5
   m_Name: Strength
   m_TagString: Untagged
@@ -1428,6 +1492,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1910533999144625251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4646567795314770110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e60bc6616b0a4d51a6111324637e1cc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: {fileID: 4646567795270291241}
+  statName: strength
+  button: {fileID: 4646567795398082052}
 --- !u!1 &4646567795331820321
 GameObject:
   m_ObjectHideFlags: 0
@@ -1950,6 +2029,7 @@ GameObject:
   - component: {fileID: 4646567795453563536}
   - component: {fileID: 4646567795453563541}
   - component: {fileID: 4646567795453563542}
+  - component: {fileID: 8331451869938791731}
   m_Layer: 5
   m_Name: Constitution
   m_TagString: Untagged
@@ -2016,6 +2096,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8331451869938791731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4646567795453563537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e60bc6616b0a4d51a6111324637e1cc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: {fileID: 4646567796750117223}
+  statName: constitution
+  button: {fileID: 4646567796600002587}
 --- !u!1 &4646567795465707361
 GameObject:
   m_ObjectHideFlags: 0
@@ -3360,6 +3455,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4646567796113730363}
   - component: {fileID: 4646567796113730356}
+  - component: {fileID: 3859500456152501228}
   m_Layer: 5
   m_Name: Stats
   m_TagString: Untagged
@@ -3405,6 +3501,23 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &3859500456152501228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4646567796113730358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cba79dc304544a63b6bc74125b331d2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 0}
+  statParent: {fileID: 4646567796026175892}
+  primaryStatParent: {fileID: 4646567795439884656}
+  dynamicStatParent: {fileID: 4655722935349028520}
+  close: {fileID: 4646567796400647176}
 --- !u!1 &4646567796116914067
 GameObject:
   m_ObjectHideFlags: 0
@@ -4135,6 +4248,7 @@ GameObject:
   - component: {fileID: 4646567796529389135}
   - component: {fileID: 4646567796529389132}
   - component: {fileID: 4646567796529389133}
+  - component: {fileID: 1408923375011682946}
   m_Layer: 5
   m_Name: Physical Defense
   m_TagString: Untagged
@@ -4200,6 +4314,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1408923375011682946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4646567796529389128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2862bd4ea93240cdad40fb2bb702f8a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: {fileID: 4646567796417115692}
+  statName: physicalDefense
 --- !u!1 &4646567796579165046
 GameObject:
   m_ObjectHideFlags: 0
@@ -4211,6 +4339,7 @@ GameObject:
   - component: {fileID: 4646567796579165045}
   - component: {fileID: 4646567796579165050}
   - component: {fileID: 4646567796579165051}
+  - component: {fileID: 9048014393254719456}
   m_Layer: 5
   m_Name: Health
   m_TagString: Untagged
@@ -4277,6 +4406,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &9048014393254719456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4646567796579165046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5211eac5da1c455a8a4b417472d2bed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: {fileID: 4646567795758674760}
+  statName: mana
+  currentValue: {fileID: 4646567795750913081}
 --- !u!1 &4646567796600002581
 GameObject:
   m_ObjectHideFlags: 0
@@ -4576,6 +4720,7 @@ GameObject:
   - component: {fileID: 4646567796694301942}
   - component: {fileID: 4646567796694301947}
   - component: {fileID: 4646567796694301940}
+  - component: {fileID: 2300378094347601925}
   m_Layer: 5
   m_Name: Magic Defense
   m_TagString: Untagged
@@ -4641,6 +4786,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2300378094347601925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4646567796694301943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2862bd4ea93240cdad40fb2bb702f8a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: {fileID: 4646567795057684813}
+  statName: magicDefense
 --- !u!1 &4646567796750117217
 GameObject:
   m_ObjectHideFlags: 0
@@ -5196,6 +5355,7 @@ GameObject:
   - component: {fileID: 4646567796923859160}
   - component: {fileID: 4646567796923859165}
   - component: {fileID: 4646567796923859166}
+  - component: {fileID: 2701201963820533419}
   m_Layer: 5
   m_Name: Physical Attack
   m_TagString: Untagged
@@ -5261,6 +5421,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2701201963820533419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4646567796923859161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2862bd4ea93240cdad40fb2bb702f8a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: {fileID: 4646567796321546152}
+  statName: physicalAttack
 --- !u!1 &4646567796965229614
 GameObject:
   m_ObjectHideFlags: 0
@@ -5272,6 +5446,7 @@ GameObject:
   - component: {fileID: 4646567796965229613}
   - component: {fileID: 4646567796965229618}
   - component: {fileID: 4646567796965229619}
+  - component: {fileID: 1227278701593440516}
   m_Layer: 5
   m_Name: Intelligence
   m_TagString: Untagged
@@ -5338,6 +5513,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1227278701593440516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4646567796965229614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e60bc6616b0a4d51a6111324637e1cc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: {fileID: 4646567795514003686}
+  statName: intelligence
+  button: {fileID: 4646567795049950112}
 --- !u!1 &4646567796981705987
 GameObject:
   m_ObjectHideFlags: 0
@@ -5423,6 +5613,7 @@ GameObject:
   - component: {fileID: 4646567797015371207}
   - component: {fileID: 4646567797015371204}
   - component: {fileID: 4646567797015371205}
+  - component: {fileID: 3869533486749261588}
   m_Layer: 5
   m_Name: Mana
   m_TagString: Untagged
@@ -5489,6 +5680,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3869533486749261588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4646567797015371200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5211eac5da1c455a8a4b417472d2bed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: {fileID: 4646567795331820326}
+  statName: health
+  currentValue: {fileID: 4646567796116914064}
 --- !u!1 &4646567797063091971
 GameObject:
   m_ObjectHideFlags: 0
