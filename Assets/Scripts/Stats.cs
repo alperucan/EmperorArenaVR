@@ -1,12 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.GameFoundation;
 
 
-    public class Stats : MonoBehaviour
+public class Stats : MonoBehaviour
     {
         public event Action OnInitialized;
         private List<Stat> stats;
+
+        private void OnEnable()
+        {
+            EventManager.Instance.OnEquip += AddEquipmentModifiers;
+            EventManager.Instance.OnUnEquip += RemoveEquipmentModifiers;
+        }
+
+        private void OnDisable()
+        {
+            EventManager.Instance.OnEquip -= AddEquipmentModifiers;
+            EventManager.Instance.OnUnEquip -= RemoveEquipmentModifiers;
+        }
 
         private void Start()
         {
@@ -45,5 +58,21 @@ using UnityEngine;
                 
             }
         }
-        
+
+        private void AddEquipmentModifiers(InventoryItem inventoryItem)
+        {
+            foreach (var mutableProperty in inventoryItem.GetMutableProperties())
+            {
+                Stat stat = stats.Find(s => s.name == mutableProperty.Key);
+                stat.AddModifier(new StatModifier(mutableProperty.Value.AsInt(),ModifierType.Flat));
+            }
+        }
+        private void RemoveEquipmentModifiers(InventoryItem inventoryItem)
+        {
+            foreach (var mutableProperty in inventoryItem.GetMutableProperties())
+            {
+                Stat stat = stats.Find(s => s.name == mutableProperty.Key);
+                stat.RemoveModifier(new StatModifier(mutableProperty.Value.AsInt(),ModifierType.Flat));
+            }
+        }
     }
