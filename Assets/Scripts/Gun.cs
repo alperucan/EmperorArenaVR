@@ -21,6 +21,6 @@ public class Gun : MonoBehaviour,IActivatable
             var rb = go.GetComponent<Rigidbody>();
             rb.AddRelativeForce(Vector3.forward * force, ForceMode.Impulse);
             Destroy(go, 5f);
-        }
+       }
     }
 }
