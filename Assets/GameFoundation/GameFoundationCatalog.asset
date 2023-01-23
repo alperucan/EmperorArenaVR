@@ -70,7 +70,7 @@ MonoBehaviour:
   - <type>k__BackingField: 4
     m_ValueType:
       longValue: 0
-    m_StringValue: pistol
+    m_StringValue: sprites/pistol
   - <type>k__BackingField: 3
     m_ValueType:
       longValue: 0
@@ -78,5 +78,10 @@ MonoBehaviour:
   m_InitialAllocation: 0
   m_IsStackableFlag: 0
   m_InitialQuantityPerStack: 1
-  m_MutablePropertyKeys: []
-  m_MutablePropertyDefaultValues: []
+  m_MutablePropertyKeys:
+  - physicalAttack
+  m_MutablePropertyDefaultValues:
+  - <type>k__BackingField: 0
+    m_ValueType:
+      longValue: 10
+    m_StringValue: 
