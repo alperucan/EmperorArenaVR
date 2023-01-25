@@ -881,6 +881,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8903123474880307450}
   - component: {fileID: 836257479054192617}
+  - component: {fileID: 4172117214179303248}
   m_Layer: 0
   m_Name: Character Selection
   m_TagString: Untagged
@@ -921,6 +922,56 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &4172117214179303248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675499222508234396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2c501a6741247df94daa1faaf14a7c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modularCharacterController: {fileID: 0}
+  stats: {fileID: 0}
+  statLabelTexts:
+  - {fileID: 1837720889772857374}
+  - {fileID: 8572165574662725655}
+  - {fileID: 3542718237668228069}
+  - {fileID: 3653176819580280753}
+  - {fileID: 957395046181494534}
+  - {fileID: 6696621067438081053}
+  statValueTexts:
+  - {fileID: 1127352696219790445}
+  - {fileID: 3140024057131320097}
+  - {fileID: 1714014277822093707}
+  - {fileID: 6019287069769461510}
+  - {fileID: 2363900405116116994}
+  - {fileID: 1380775899841499792}
+  hairText: {fileID: 8327344631802490744}
+  faceText: {fileID: 7562815894425894850}
+  facialHairText: {fileID: 2191618084442464626}
+  prevFaceButton: {fileID: 8916666983472267258}
+  nextFaceButton: {fileID: 5226919995547408078}
+  prevHairButton: {fileID: 349110826837324208}
+  nextHairButton: {fileID: 6557078545428967217}
+  prevFacialHairButton: {fileID: 5964595617745821763}
+  nextFacialHairButton: {fileID: 1565685028695555305}
+  maleButton: {fileID: 4721657448437157514}
+  femaleButton: {fileID: 320615357373142091}
+  facialHairParent: {fileID: 2191120557503081680}
+  blackHairButton: {fileID: 4762588184269050251}
+  blondHairButton: {fileID: 5442831637422979765}
+  redHairButton: {fileID: 2939290768483569143}
+  brownHairButton: {fileID: 5302557144896179100}
+  paleSkinButton: {fileID: 8643319282923756470}
+  lightSkinButton: {fileID: 2179854577738030431}
+  tannedSkinButton: {fileID: 1267500940555151436}
+  darkSkinButton: {fileID: 64964982319568054}
+  randomStatsButton: {fileID: 8628196502264736201}
+  acceptButton: {fileID: 3161455035548284237}
 --- !u!1 &1689498661950410796
 GameObject:
   m_ObjectHideFlags: 0

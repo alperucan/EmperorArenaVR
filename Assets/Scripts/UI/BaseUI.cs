@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BaseUI : MonoBehaviour
 {
+    public bool isShowing => canvasGroup.alpha == 1;
     private CanvasGroup canvasGroup;
 
     protected void Awake()
@@ -11,7 +12,7 @@ public class BaseUI : MonoBehaviour
         canvasGroup = GetComponent<CanvasGroup>();
     }
 
-    public void Show() 
+    public virtual void Show() 
     {
         canvasGroup.alpha = 1;
         canvasGroup.blocksRaycasts = true;
@@ -20,7 +21,7 @@ public class BaseUI : MonoBehaviour
 
     }
 
-    public void Hide() 
+    public virtual void Hide() 
     {
         canvasGroup.alpha = 0;
         canvasGroup.blocksRaycasts = false;

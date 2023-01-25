@@ -13,6 +13,9 @@ public class Player : MonoBehaviour
     [SerializeField] private ActionBasedContinuousMoveProvider actionBasedContinuousMoveProvider;
     [SerializeField] private ActionBasedContinuousTurnProvider actionBasedContinuousTurnProvider;
 
+    [SerializeField] private Transform rightHand;
+    [SerializeField] private Transform leftHand;
+    
     public Inventory Inventory { get; private set; }
     private void Awake()
     {
@@ -37,6 +40,13 @@ public class Player : MonoBehaviour
         rightHandDirectInteractor.SetActive(false);
         leftHandRayInteractor.SetActive(true);
         rightHandRayInteractor.SetActive(true);
+        
+        leftHand.parent = leftHandRayInteractor.transform;
+        leftHand.localPosition = Vector3.zero;
+        leftHand.localRotation =Quaternion.Euler(-90,180,-90);
+        rightHand.parent = rightHandRayInteractor.transform;
+        rightHand.localPosition =Vector3.zero;
+        rightHand.localRotation=Quaternion.Euler(90,0,90);
     }
     private void DisableUIMode() 
     {
@@ -46,6 +56,13 @@ public class Player : MonoBehaviour
         rightHandRayInteractor.SetActive(false);
         leftHandDirectInteractor.SetActive(true);
         rightHandDirectInteractor.SetActive(true);
+        
+        leftHand.parent = leftHandRayInteractor.transform;
+        leftHand.localPosition = Vector3.zero;
+        leftHand.localRotation =Quaternion.Euler(-90,180,-90);
+        rightHand.parent = rightHandRayInteractor.transform;
+        rightHand.localPosition =Vector3.zero;
+        rightHand.localRotation=Quaternion.Euler(90,0,90);
        
     }
 }

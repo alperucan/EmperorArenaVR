@@ -9,7 +9,7 @@ public class Equipment : MonoBehaviour
     [SerializeField] private Transform primaryWeaponParent;
     private List<GameObject> primaryWeapons = new List<GameObject>();
     private int currentPrimaryWeaponId = 1;
-
+   
     private void Awake()
     {
         foreach(Transform child in primaryWeaponParent) 
@@ -38,17 +38,22 @@ public class Equipment : MonoBehaviour
     {
         return currentPrimaryWeaponId != -1 ? primaryWeapons[currentPrimaryWeaponId] : null;
     }
-    private void Equip(InventoryItem inventoryItem) 
+    public void Equip(InventoryItem inventoryItem) 
     {
         string equipmentType = inventoryItem.definition.GetStaticProperty("equipmentType").AsString();
         Items.Set(equipmentType, inventoryItem);
-        EnablePrimaryWeapon(inventoryItem);
+        string type = inventoryItem.definition.GetStaticProperty("type").AsString();
+        if(type=="weapon")
+            EnablePrimaryWeapon(inventoryItem);
     }
 
-    private void UnEquip(InventoryItem inventoryItem) 
+    public void UnEquip(InventoryItem inventoryItem) 
     {
         Items.Remove(inventoryItem);
-        DisablePrimaryWeapon();
+        string type = inventoryItem.definition.GetStaticProperty("type").AsString();
+        if(type=="weapon")
+            DisablePrimaryWeapon();
+       
     
     }
     private void EnablePrimaryWeapon(InventoryItem inventoryItem) 

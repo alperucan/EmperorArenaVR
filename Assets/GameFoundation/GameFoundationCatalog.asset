@@ -48,6 +48,49 @@ MonoBehaviour:
   m_Items:
   - {fileID: -7306426153403211302}
   - {fileID: 7471737651646714376}
+  - {fileID: 5458824096150429412}
+--- !u!114 &5458824096150429412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcbd052539327467295d2009d33aa660, type: 3}
+  m_Name: Item_boots
+  m_EditorClassIdentifier: 
+  m_DisplayName: Boots
+  m_Key: boots
+  m_Tags: []
+  m_StaticPropertyKeys:
+  - equipmentType
+  - armor
+  - sprite
+  - type
+  m_StaticPropertyValues:
+  - <type>k__BackingField: 3
+    m_ValueType:
+      longValue: 0
+    m_StringValue: feet
+  - <type>k__BackingField: 4
+    m_ValueType:
+      longValue: 0
+    m_StringValue: ScriptableObjects/Armor/Boots
+  - <type>k__BackingField: 4
+    m_ValueType:
+      longValue: 0
+    m_StringValue: sprites/boots
+  - <type>k__BackingField: 3
+    m_ValueType:
+      longValue: 0
+    m_StringValue: armor
+  m_InitialAllocation: 0
+  m_IsStackableFlag: 0
+  m_InitialQuantityPerStack: 1
+  m_MutablePropertyKeys: []
+  m_MutablePropertyDefaultValues: []
 --- !u!114 &7471737651646714376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,6 +109,7 @@ MonoBehaviour:
   m_StaticPropertyKeys:
   - sprite
   - equipmentType
+  - type
   m_StaticPropertyValues:
   - <type>k__BackingField: 4
     m_ValueType:
@@ -75,6 +119,10 @@ MonoBehaviour:
     m_ValueType:
       longValue: 0
     m_StringValue: primaryWeapon
+  - <type>k__BackingField: 3
+    m_ValueType:
+      longValue: 0
+    m_StringValue: weapon
   m_InitialAllocation: 0
   m_IsStackableFlag: 0
   m_InitialQuantityPerStack: 1
