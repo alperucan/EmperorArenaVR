@@ -11,7 +11,7 @@ public abstract class WeaponController : MonoBehaviour
         [SerializeField] private Equipment equipment;
         [SerializeField] private string equipmentType;
         
-        private int currentId;
+        [SerializeField]private int currentId;
 
         private void OnEnable()
         {
@@ -26,14 +26,17 @@ public abstract class WeaponController : MonoBehaviour
 
         private void Equip(InventoryItem inventoryItem)
         {
+            
             if (inventoryItem.definition.GetStaticProperty("equipmentType").AsString() == equipmentType)
             {
-                if(currentId != -1)
-                    DisableWeapon();
-
-                int id = weapons.FindIndex(weapon => weapon.name == inventoryItem.definition.displayName);
+                Debug.Log("Weapon Controller Equip");
+                Debug.Log("inventoryItem.definition.displayName " +inventoryItem.definition.displayName);
+                //why (Lenght -3) cuz GameObject.name_XX den _XX cikar 
+                int id = weapons.FindIndex(go => go.name.Substring(0,go.name.Length-3) == inventoryItem.definition.displayName);
+                Debug.Log("Weapon id : " +id);
                 EnableWeapon(id);
             }
+            
         }
 
         private void UnEquip(InventoryItem inventoryItem)
@@ -44,14 +47,22 @@ public abstract class WeaponController : MonoBehaviour
 
         private void DisableWeapon()
         {
-            weapons[currentId].SetActive(false);
-            currentId = -1;
+            if (currentId != -1)
+            {
+                weapons[currentId].SetActive(false);
+                currentId = -1;
+            }
         }
 
         private void EnableWeapon(int id)
         {
-            weapons[id].SetActive(true);
-            currentId = id;
+            Debug.Log("Weapon Controller EnableWeapon1");
+            if (id != -1)
+            {
+                Debug.Log("Weapon Controller EnableWeapon2");
+                weapons[id].SetActive(true);
+                currentId = id;
+            }
         }
 
         [ContextMenu("Setup")]

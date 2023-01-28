@@ -10,9 +10,10 @@ using UnityEngine.UI;
 public class RightControllerActions : MonoBehaviour, XRIDefaultInputActions.IXRIRightHandActions,XRIDefaultInputActions.IXRIRightHandInteractionActions
 {
     private XRIDefaultInputActions controls;
-    [SerializeField] private WeaponController weaponController;
-    [SerializeField] private Text text;
-    [SerializeField] private Inventory inventory;
+    [SerializeField] private PrimaryWeaponController primaryWeaponController;
+    //[SerializeField] private Text text;
+    //[SerializeField] private Inventory inventory;
+    [SerializeField] private Player player;
     private void OnEnable()
     {
         if (controls == null)
@@ -45,32 +46,23 @@ public class RightControllerActions : MonoBehaviour, XRIDefaultInputActions.IXRI
 
    public void OnPrimaryButtonPress(InputAction.CallbackContext context)
    {
-       if (context.performed)
-       {
-           text.text = "Primary Button Press Right";
-           UIManager.Instance.StatsUI.Hide();
-       }
+      
    }
 
    public void OnSecondaryButtonPress(InputAction.CallbackContext context)
    {
-       if (context.performed)
-       {
-           text.text = "OnSecondaryButtonPress Right";
-           UIManager.Instance.StatsUI.Show();
-       }
+     
    }
 
    public void OnSelect(InputAction.CallbackContext context)
    {
        if (context.performed)
        {
-           text.text = "OnSelect Right";
            var hits = Physics.OverlapSphere(transform.position, 0.5f, 1 << LayerMask.NameToLayer("Item"));
            foreach (var hit in hits)
            {
                var item = hit.GetComponent<Item>();
-               inventory.Add(item);
+               player.Inventory.Add(item);
            }
        }
    }
@@ -84,9 +76,8 @@ public class RightControllerActions : MonoBehaviour, XRIDefaultInputActions.IXRI
    {
        if (context.performed)
        {
-           text.text = "OnActivate Right";
-           var go = weaponController.GetCurrent();
-           if(go !=null)
+           var go = primaryWeaponController.GetCurrent();
+           if (go != null)
                go.GetComponent<IActivatable>()?.Activate();
        }
    }

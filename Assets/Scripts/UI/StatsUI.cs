@@ -7,58 +7,71 @@ using UnityEngine.UI;
 
 public class StatsUI : BaseUI
     {
-        [SerializeField] private Stats stats;
+        public Stats stats;
+        [SerializeField] private Skills skills;
         [SerializeField] private Transform statParent;
-        [SerializeField] private Transform primaryStatParent;
         [SerializeField] private Transform dynamicStatParent;
-        [SerializeField] private Button close;
-        
+        [SerializeField] private Button closeButton;
+        [SerializeField] private Text availablePoints;
+        [SerializeField] private Text combatLevel;
         private List<BaseStatUI> statUis;
-        private List<PrimaryStatUI> primaryStatUis;
         private List<DynamicStatUI> dynamicStatUis;
 
         private void Awake()
         {
             base.Awake();
             statUis = statParent.GetComponentsInChildren<BaseStatUI>(true).ToList();
-            primaryStatUis = primaryStatParent.GetComponentsInChildren<PrimaryStatUI>(true).ToList();
             dynamicStatUis = dynamicStatParent.GetComponentsInChildren<DynamicStatUI>(true).ToList();
-            stats.OnInitialized += Refresh;
-            close.onClick.AddListener(delegate { Hide(); });
+            closeButton.onClick.AddListener(delegate { UIManager.Instance.Hide(); });
         }
 
-        public override void Show()
+        private void Start()
         {
-            base.Show();
-            EventManager.Instance.ShowUI();
+            combatLevel.text = $"Lvl. {skills[SkillType.Combat].Level}";
+            availablePoints.text = stats.AvailablePoints.ToString();
+            Initialize();
         }
 
-        public override void Hide()
+        private void OnEnable()
         {
-            base.Hide();
-            EventManager.Instance.HideUI();
+            stats.OnChangePoints += ChangePoints;
+            skills[SkillType.Combat].OnLevelUp += LevelUp;
         }
-        private void Refresh()
+
+        private void OnDisable()
         {
-            foreach (var statUi in statUis)
+            stats.OnChangePoints -= ChangePoints;
+            skills[SkillType.Combat].OnLevelUp -= LevelUp;
+        }
+
+        private void LevelUp(Skill skill)
+        {
+            combatLevel.text = $"Lvl. {skill.Level}";
+        }
+
+        private void ChangePoints()
+        {
+            availablePoints.text = stats.AvailablePoints.ToString();
+        }
+/// <summary>
+/// TODO statUI.container a bak
+/// </summary>
+        private void Initialize()
+        {
+            foreach (var statUI in statUis)
             {
-                Stat stat = stats[statUi.statName];
-                statUi.Refresh(stat);
-                stat.OnChangedValue += statUi.Refresh;
+                Stat stat = stats[statUI.statName];
+                statUI.Refresh(stat);
+                stat.OnChangedValue += statUI.Refresh;
+                
+                statUI.container = this;
             }
-            foreach (var primaryStatUi in primaryStatUis)
+            
+            foreach (var dynamicStatUI in dynamicStatUis)
             {
-                Stat stat = stats[primaryStatUi.statName];
-                primaryStatUi.Refresh(stat);
-                stat.OnChangedValue += primaryStatUi.Refresh;
-            }
-
-            foreach (var dynamicStatUi in dynamicStatUis)
-            {
-                DynamicStat dynamicStat = stats[dynamicStatUi.statName] as DynamicStat;
-                dynamicStatUi.Refresh(dynamicStat);
-                dynamicStat.OnChangedValue += dynamicStatUi.Refresh;
-                dynamicStat.OnChangedCurrentValue += dynamicStatUi.Refresh;
+                DynamicStat dynamicStat = stats[dynamicStatUI.statName] as DynamicStat;
+                dynamicStatUI.Refresh(dynamicStat);
+                dynamicStat.OnChangedCurrentValue += dynamicStatUI.Refresh;
             }
         }
     }

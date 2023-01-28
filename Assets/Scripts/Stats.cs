@@ -2,68 +2,115 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.GameFoundation;
+using Random = UnityEngine.Random;
 
 
 public class Stats : MonoBehaviour
     {
-        public event Action OnInitialized;
-        private List<Stat> stats;
+         private List<Stat> stats;
         private int availablePoints;
-        public int AvailablePoints => availablePoints;
+
+        public int AvailablePoints
+        {
+            get { return availablePoints; }
+            set
+            {
+                availablePoints = value;
+                OnChangePoints?.Invoke();
+            }
+        }
+        public event Action OnChangePoints;
+        private Skills skills;
+        private Equipment equipment;
+
+        private void Awake()
+        {
+            skills = GetComponent<Skills>();
+            equipment = GetComponent<Equipment>();
+        }
+
         private void OnEnable()
         {
-            EventManager.Instance.OnEquip += AddEquipmentModifiers;
-            EventManager.Instance.OnUnEquip += RemoveEquipmentModifiers;
+            equipment.OnEquip += AddEquipmentModifiers;
+            equipment.OnUnEquip += RemoveEquipmentModifiers;
+            skills[SkillType.Combat].OnLevelUp += LevelUp;
         }
 
         private void OnDisable()
         {
-            EventManager.Instance.OnEquip -= AddEquipmentModifiers;
-            EventManager.Instance.OnUnEquip -= RemoveEquipmentModifiers;
+            equipment.OnEquip -= AddEquipmentModifiers;
+            equipment.OnUnEquip -= RemoveEquipmentModifiers;
+            skills[SkillType.Combat].OnLevelUp -= LevelUp;
         }
 
-        private void Start()
+        private void LevelUp(Skill skill)
         {
-            if (stats == null)
-            {
-               Initialize();
-            }
-           
+            AvailablePoints += 5;
         }
 
-        public void SpendPoints(int points,string statName)
+        public void Initialize(bool randomize)
         {
-            if (points > 0 && points <= availablePoints)
-            {
-                Stat stat = this[statName];
-                if (stat != null)
-                {
-                    stat.BaseValue += points;
-                    availablePoints -= points;
-                }
-
-            }
-        }
-
-        public void Initialize()
-        {
-            stats = new List<Stat>()
+            availablePoints = 15;
+            
+            stats = new List<Stat>
             {
                 new Stat(StatType.STRENGTH, 1),
                 new Stat(StatType.CONSTITUTION, 1),
                 new Stat(StatType.WISDOM, 1),
                 new Stat(StatType.INTELLIGENCE, 1),
                 new Stat(StatType.CHARISMA, 1),
-                new Stat(StatType.DEXTERITY, 1),
+                new Stat(StatType.DEXTERITY, 1)
+            };
+
+            if (randomize)
+            {
+                while (AvailablePoints > 0)
+                {
+                    int index = Random.Range(0, stats.Count);
+                    int points = Random.Range(1, AvailablePoints);
+                    SpendPoints(stats[index].name, points);
+                }
+            }
+            
+            stats.AddRange(new List<Stat>
+            {
                 new Stat(StatType.PHYSICAL_ATTACK, 0),
-                new Stat(StatType.PHYSICAL_DEFENSE, 0),
                 new Stat(StatType.MAGIC_ATTACK, 0),
+                new Stat(StatType.PHYSICAL_DEFENSE, 0),
                 new Stat(StatType.MAGIC_DEFENSE, 0),
                 new DynamicStat(StatType.HEALTH, 100),
                 new DynamicStat(StatType.MANA, 100)
-            };
-            availablePoints = 15;
-
+            });
+        }
+        
+        public void SpendPoints(string name, int points)
+        {
+            if (points > 0 && points <= availablePoints)
+            {
+                Stat stat = this[name];
+                if (stat != null)
+                {
+                    stat.BaseValue += points;
+                    AvailablePoints -= points;
+                }
+            }
+        }
+        
+        private void AddEquipmentModifiers(InventoryItem item)
+        {
+            foreach (var mutableProperty in item.GetMutableProperties())
+            {
+                Stat stat = stats.Find(s => s.name == mutableProperty.Key);
+                stat.AddModifier(new StatModifier(item.id, mutableProperty.Value.AsInt(), ModifierType.Flat));
+            }
+        }
+        private void RemoveEquipmentModifiers(InventoryItem item)
+        {
+            foreach (var mutableProperty in item.GetMutableProperties())
+            {
+                Stat stat = stats.Find(s => s.name == mutableProperty.Key);
+                stat.RemoveModifier(item.id);
+            }
         }
         public Stat this[string name]
         {
@@ -75,24 +122,8 @@ public class Stats : MonoBehaviour
                     stats[index] = value;
                 else
                     stats.Add(value);
-                
             }
         }
-
-        private void AddEquipmentModifiers(InventoryItem inventoryItem)
-        {
-            foreach (var mutableProperty in inventoryItem.GetMutableProperties())
-            {
-                Stat stat = stats.Find(s => s.name == mutableProperty.Key);
-                stat.AddModifier(new StatModifier(mutableProperty.Value.AsInt(),ModifierType.Flat));
-            }
-        }
-        private void RemoveEquipmentModifiers(InventoryItem inventoryItem)
-        {
-            foreach (var mutableProperty in inventoryItem.GetMutableProperties())
-            {
-                Stat stat = stats.Find(s => s.name == mutableProperty.Key);
-                stat.RemoveModifier(new StatModifier(mutableProperty.Value.AsInt(),ModifierType.Flat));
-            }
-        }
+        
+   
     }

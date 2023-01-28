@@ -13,20 +13,29 @@ public class Skill
     [SerializeField] private int currentExperience;
     [SerializeField] private int level;
     [SerializeField] private SkillType type;
-    public event Action<Skill> OnlevelUp; 
+    public event Action<Skill> OnLevelUp;
 
     public SkillType Type
     {
-        get { return this.type; }
+        get { return type; }
     }
-
+        
     public int Level
     {
-        get { return this.level; }
+        get { return level; }
     }
+        
+    public int RequiredExperience
+    {
+        get { return requiredExperience; }
+    }
+        
     public int CurrentExperience
     {
-        get { return this.currentExperience; }
+        get
+        {
+            return currentExperience;
+        }
         set
         {
             if (currentExperience + value >= requiredExperience)
@@ -34,17 +43,13 @@ public class Skill
                 currentExperience = currentExperience + value - requiredExperience;
                 requiredExperience *= 2;
                 level += 1;
-                OnlevelUp?.Invoke(this);
+                OnLevelUp?.Invoke(this);
             }
             else
             {
-                currentExperience += value;
+                currentExperience = Mathf.Clamp(value, 0, requiredExperience);
             }
         }
-    }
-    public int RequiredExperience
-    {
-        get { return this.requiredExperience; }
     }
 
     public Skill(int currentExperience, int level, int requiredExperience, SkillType type)
@@ -54,5 +59,4 @@ public class Skill
         this.requiredExperience = requiredExperience;
         this.type = type;
     }
-    
 }

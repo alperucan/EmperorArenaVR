@@ -1,44 +1,65 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.GameFoundation;
 
 public class Inventory : MonoBehaviour
 {
-   public ItemList Items { get; private set; }
+    private string id;
+    public ItemList Items => items;
+    private ItemList items;
+    public event Action<InventoryItem> OnItemAddedToInventory;
+    public event Action<InventoryItem> OnItemRemovedFromInventory;
+    public event Action OnInventoryInitialized;
 
+    private Equipment equipment;
 
-    private void Start()
+    private void Awake()
     {
-        if (Items == null) 
-        {
-            Items = GameFoundationSdk.inventory.CreateList();
-        }
+        equipment = GetComponent<Equipment>();
     }
+
     private void OnEnable()
     {
-        EventManager.Instance.OnEquip += Add;
-        EventManager.Instance.OnUnEquip += Remove;
+        GameFoundationSdk.initialized += Initialize;
+        equipment.OnEquip += Remove;
+        equipment.OnUnEquip += Add;
     }
+
     private void OnDisable()
     {
-        EventManager.Instance.OnEquip -= Add;
-        EventManager.Instance.OnUnEquip -= Remove;
+        GameFoundationSdk.initialized -= Initialize;
+        equipment.OnEquip -= Remove;
+        equipment.OnUnEquip -= Add;
     }
-    public void Add(Item item) 
+
+    public void Initialize()
     {
-        Items.Add(item.InventoryItem);
-        Debug.Log($"Added {item.InventoryItem.definition.displayName} to inventory");
+        items = !String.IsNullOrEmpty(id) ? GameFoundationSdk.inventory.FindCollection<ItemList>(id) : GameFoundationSdk.inventory.CreateList();
+        ICollection<IItemCollection> collection = new List<IItemCollection>();
+        GameFoundationSdk.inventory.GetCollections(collection);
+        OnInventoryInitialized?.Invoke();
+    }
+
+    public void Add(Item item)
+    {
+        InventoryItemDefinition itemDefinition = GameFoundationSdk.catalog.Find<InventoryItemDefinition>(item.DefinitionKey);
+        InventoryItem inventoryItem = GameFoundationSdk.inventory.CreateItem(itemDefinition);
+        Add(inventoryItem);
         Destroy(item.gameObject);
     }
-    public void Add(InventoryItem inventoryItem) 
-    {
-        Items.Add(inventoryItem);
-    
-    }
-    public void Remove(InventoryItem inventoryItem)
-    {
 
-        Items.Remove(inventoryItem);
+    private void Add(InventoryItem inventoryItem)
+    {
+        items.Add(inventoryItem);
+        OnItemAddedToInventory?.Invoke(inventoryItem);
     }
+
+    private void Remove(InventoryItem inventoryItem)
+    {
+        OnItemRemovedFromInventory?.Invoke(inventoryItem);
+        items.Remove(inventoryItem);
+    }
+
 }

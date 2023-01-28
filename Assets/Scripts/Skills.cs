@@ -7,25 +7,21 @@ public class Skills : MonoBehaviour
     [SerializeField] private ParticleSystem levelUpVfx;
     [SerializeField] private AudioSource levelUpSfx;
     private List<Skill> skills;
-
-    private void Awake()
+    public void Initialize()
     {
-        if (skills == null)
+        skills = new List<Skill>
         {
-            skills = new List<Skill>()
-            {
-                new Skill(0, 1, 10, SkillType.Combat)
-            };
-        }
+            new Skill(0, 1, 10, SkillType.Combat)
+        };
     }
 
     private void OnEnable()
     {
         foreach (var skill in skills)
         {
-            skill.OnlevelUp += LevelUp;
+            skill.OnLevelUp += LevelUp;
         }
-
+        
         EventManager.Instance.OnEnemyDied += GainExperience;
     }
 
@@ -33,11 +29,10 @@ public class Skills : MonoBehaviour
     {
         foreach (var skill in skills)
         {
-            skill.OnlevelUp -= LevelUp;
+            skill.OnLevelUp -= LevelUp;
         }
         
         EventManager.Instance.OnEnemyDied -= GainExperience;
-        
     }
 
     public Skill this[SkillType type]
@@ -50,18 +45,15 @@ public class Skills : MonoBehaviour
                 skills[index] = value;
             else
                 skills.Add(value);
-                
         }
     }
-    
+
     private void LevelUp(Skill skill)
     {
         if (levelUpSfx)
             levelUpSfx.Play();
-        if(levelUpVfx)
+        if (levelUpVfx)
             levelUpVfx.Play();
-        
-        
     }
 
     private void GainExperience(Enemy enemy)

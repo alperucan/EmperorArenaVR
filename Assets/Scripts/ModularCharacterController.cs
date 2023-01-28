@@ -45,8 +45,10 @@ public enum PartType
 }
     public class ModularCharacterController : MonoBehaviour
     {
-       [SerializeField] private Gender gender;
-       [SerializeField] private Material material;
+        [SerializeField] private Gender gender;
+        [SerializeField] private Material material;
+        [SerializeField] private Equipment equipment;
+        
         [Header("Active Parts")]
         public ActivePartMap activeParts;
 
@@ -97,13 +99,13 @@ public enum PartType
 
         private void OnEnable()
         {
-            EventManager.Instance.OnEquip += Equip;
-            EventManager.Instance.OnUnEquip += UnEquip;
+            equipment.OnEquip += Equip;
+            equipment.OnUnEquip += UnEquip;
         }
         private void OnDisable()
         {
-            EventManager.Instance.OnEquip -= Equip;
-            EventManager.Instance.OnUnEquip -= UnEquip;
+            equipment.OnEquip -= Equip;
+            equipment.OnUnEquip -= UnEquip;
         }
 
         public void ChangeGender(Gender gender)
@@ -152,10 +154,10 @@ public enum PartType
         private void Equip(InventoryItem inventoryItem)
         {
             string type = inventoryItem.definition.GetStaticProperty("type").AsString();
-            Debug.Log("aaa");
+            //Debug.Log("aaa");
             if (type == "armor")
             {
-                Debug.Log("bbb");
+               // Debug.Log("bbb");
                 Armor armor = inventoryItem.definition.GetStaticProperty("armor").AsAsset<Armor>();
                 foreach (ArmorPart part in armor.parts)
                  {

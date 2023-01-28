@@ -28,16 +28,16 @@ public class GameplayActions : MonoBehaviour, PlayerControls.IGameplayActions
             controls.Gameplay.SetCallbacks(this);
         }
         controls.Gameplay.Enable();
-        EventManager.Instance.OnShowUI += controls.Gameplay.Disable;
-        EventManager.Instance.OnHideUI += controls.Gameplay.Enable;
+        UIManager.Instance.OnShowUI += controls.Gameplay.Disable;
+        UIManager.Instance.OnHideUI += controls.Gameplay.Enable;
     }
 
     private void OnDisable()
     {
         Debug.Log("GameplayActions Disable");
         controls.Gameplay.Disable();
-        EventManager.Instance.OnShowUI += controls.Gameplay.Disable;
-        EventManager.Instance.OnHideUI += controls.Gameplay.Enable;
+        UIManager.Instance.OnShowUI += controls.Gameplay.Disable;
+        UIManager.Instance.OnHideUI += controls.Gameplay.Enable;
     }
 
     private void Update()
@@ -69,25 +69,7 @@ public class GameplayActions : MonoBehaviour, PlayerControls.IGameplayActions
        // Debug.Log("OnMove Method");
     }
 
-    public void OnOpenInventory(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            Debug.Log("OnOpenInventory");
-            UIManager.Instance.Show(Constants.UI.INVENTORY);
-
-        }
-    }
-
-    public void OnOpenEquipment(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            Debug.Log("OnOpenEquipment");
-            UIManager.Instance.Show(Constants.UI.EQUIPMENT);
-        }
-    }
-
+ 
     public void OnPickUp(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -100,6 +82,15 @@ public class GameplayActions : MonoBehaviour, PlayerControls.IGameplayActions
                 var item = hit.GetComponent<Item>();
                 inventory.Add(item);
             }
+        }
+    }
+
+    public void OnOpenRadialMenu(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Debug.Log("Show Radial menu");
+            UIManager.Instance.Show(Constants.UI.RADIAL_MENU);
         }
     }
 }

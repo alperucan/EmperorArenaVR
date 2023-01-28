@@ -236,6 +236,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8697329384115392720}
   - component: {fileID: 8697329384115392721}
+  - component: {fileID: 4452429362728081181}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -279,6 +280,23 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!114 &4452429362728081181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8697329384115392735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 465e02b84477417c9c9db6c98efac88b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closeButton: {fileID: 8697329385306028771}
+  saveButton: {fileID: 8697329385420014775}
+  loadButton: {fileID: 8697329385395222168}
+  exitButton: {fileID: 8697329385633885364}
+  optionsButton: {fileID: 8697329385774167345}
 --- !u!1 &8697329384153413484
 GameObject:
   m_ObjectHideFlags: 0

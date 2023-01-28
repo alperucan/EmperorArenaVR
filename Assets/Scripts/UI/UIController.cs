@@ -14,9 +14,12 @@ public class UIController : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.Instance.OnShowUI += SetPosition;
+        UIManager.Instance.OnShowUI += SetPosition;
     }
-
+    private void OnDisable()
+    {
+        UIManager.Instance.OnShowUI -= SetPosition;
+    }
     void SetPosition() 
     {
         transform.position = mainCameraTransform.TransformPoint(new Vector3(0, 0, distance));

@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using Cinemachine;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 
 public class CharacterSelectionUI : BaseUI
 {
-    [SerializeField] private CinemachineVirtualCamera virtualCamera;
+    
         
         [SerializeField] private ModularCharacterController modularCharacterController;
         [SerializeField] private Stats stats;
@@ -91,14 +92,15 @@ public class CharacterSelectionUI : BaseUI
         public override void Show()
         {
             base.Show();
-            if (virtualCamera)
-                virtualCamera.Priority = 1;
+            if(mirror)
+                mirror.SetActive(true);
         }
         public override void Hide()
         {
             base.Hide();
-            if (virtualCamera)
-                virtualCamera.Priority = -1;
+            if(mirror)
+                mirror.SetActive(false);
+        
         }
         public void Awake()
         {
@@ -127,7 +129,7 @@ public class CharacterSelectionUI : BaseUI
         /// </summary>
         private void Start()
         {
-           // RandomizeStats();
+           RandomizeStats();
         }
 
         private void NextFace()
@@ -199,24 +201,18 @@ public class CharacterSelectionUI : BaseUI
         }
         private void RandomizeStats()
         {
-            foreach (var stat in statValueTexts)
-            {
-                stat.text = "1";
-            }
+            stats.Initialize(true);
 
-            stats.Initialize();
-            while (stats.AvailablePoints>0)
+            for (int i = 0; i < statValueTexts.Count; i++)
             {
-                int index = Random.Range(0, 6);
-                int points = Random.Range(1, stats.AvailablePoints);
-                stats.SpendPoints(points,statLabelTexts[index].text.ToLower());
-                statValueTexts[index].text = $"{stats[statLabelTexts[index].text.ToLower()].BaseValue}";
+                statValueTexts[i].text = $"{stats[statLabelTexts[i].text.ToLower()].BaseValue}";
             }
         }
 
         private void Accept()
         {
-            Hide();
+            SceneManager.UnloadSceneAsync(Constants.SCENE.CHARACTER_SELECTION);
+            SceneManager.LoadScene(Constants.SCENE.TUTORIAL, LoadSceneMode.Additive);
         }
         
     }

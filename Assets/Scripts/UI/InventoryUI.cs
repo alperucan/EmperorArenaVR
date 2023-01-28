@@ -7,9 +7,10 @@ using UnityEngine.UI;
 
 public class InventoryUI : BaseUI
 {
+    [SerializeField] private Equipment equipment;
     [SerializeField] private Inventory inventory;
     [SerializeField] private Transform slotParent;
-    [SerializeField] private Button close;
+    [SerializeField] private Button closeButton;
     private List<InventorySlot> slots;
 
 
@@ -17,52 +18,60 @@ public class InventoryUI : BaseUI
     {
         base.Awake();
         slots = slotParent.GetComponentsInChildren<InventorySlot>(true).ToList();
-        close.onClick.AddListener(delegate { Hide(); });
-    }
-
-    public override void Show()
-    {
-        base.Show();
-        EventManager.Instance.ShowUI();
-    }
-
-    public override void Hide()
-    {
-        base.Hide();
-        EventManager.Instance.HideUI();
-    }
-
-    public void SubscribeToGameFoundationEvents() 
-    {
-        GameFoundationSdk.inventory.itemAddedToCollection += OnItemAddedToInventory;
-        GameFoundationSdk.inventory.itemRemovedFromCollection += OnItemRemovedToInventory;
-    }
-    public void UnSubscribeToGameFoundationEvents()
-    {
-        GameFoundationSdk.inventory.itemAddedToCollection -= OnItemAddedToInventory;
-        GameFoundationSdk.inventory.itemRemovedFromCollection -= OnItemRemovedToInventory;
-    }
-    private void OnItemAddedToInventory(IItemCollection itemCollection,InventoryItem inventoryItem) 
-    {
-        if(inventory.Items.id == itemCollection.id) 
+        foreach (var slot in slots)
         {
-            foreach(var slot in slots) 
+            slot.equipment = equipment;
+        }
+        closeButton.onClick.AddListener(delegate { UIManager.Instance.Hide(); });
+    }
+
+    private void OnEnable()
+    {
+        inventory.OnItemAddedToInventory += AddItemToInventory;
+        inventory.OnItemRemovedFromInventory += RemoveItemFromInventory;
+        inventory.OnInventoryInitialized += Initialize;
+    }
+
+    private void OnDisable()
+    {
+        inventory.OnItemAddedToInventory -= AddItemToInventory;
+        inventory.OnItemRemovedFromInventory -= RemoveItemFromInventory;
+        inventory.OnInventoryInitialized -= Initialize;
+    }
+
+    private void Initialize()
+    {
+        for (int i = 0; i < inventory.Items.Count; i++)
+        {
+            InventoryItem inventoryItem = inventory.Items[i];
+            slots[i].Set(inventoryItem);
+        }
+    }
+        
+    private void AddItemToInventory(InventoryItem inventoryItem)
+    {
+        foreach (var slot in slots)
+        {
+            if (slot.inventoryItem == null)
             {
-                if(slot.inventoryItem == null) 
+                slot.Set(inventoryItem);
+                break;
+            }
+        }
+    }
+
+    private void RemoveItemFromInventory(InventoryItem inventoryItem)
+    {
+        foreach (var slot in slots)
+        {
+            if (slot.inventoryItem != null)
+            {
+                if (slot.inventoryItem.id == inventoryItem.id)
                 {
-                    slot.Set(inventoryItem);
-                    break;
+                    slot.UnSet();
                 }
             }
         }
     }
-    private void OnItemRemovedToInventory(IItemCollection itemCollection, InventoryItem inventoryItem)
-    {
-        if (inventory.Items.id == itemCollection.id)
-        {
-            ItemList inventory = itemCollection as ItemList;
-            int index = inventory.IndexOf(inventoryItem);
-            slots[index].UnSet();
-        }
-    }
 }
+

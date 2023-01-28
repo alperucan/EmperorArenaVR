@@ -16,18 +16,18 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private  EquipmentUI equipmentUI;
     [SerializeField] private  StatsUI statsUI;
     [SerializeField] private CharacterSelectionUI characterSelectionUI;
-   // [SerializeField] private MenuUI menuUI;
-    //[SerializeField] private RadialMenu radialMenu;
-    private void Start()
+    [SerializeField] private Menu menuUI;
+    [SerializeField] private RadialMenu radialMenu;
+    private void Awake()
     {
         uis = new Dictionary<string, BaseUI>
         {
             { Constants.UI.EQUIPMENT, equipmentUI },
-            { Constants.UI.INVENTORY, inventoryUI },
+            { Constants.UI.INVENTORY, inventoryUI },    
             { Constants.UI.STATS, statsUI },
-      //      { Constants.UI.MENU, menuUI },
+           { Constants.UI.MENU, menuUI },
             { Constants.UI.CHARACTER_SELECTION, characterSelectionUI },
-        //    { Constants.UI.RADIAL_MENU, radialMenu }
+           { Constants.UI.RADIAL_MENU, radialMenu }
         };
     }
 

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4476756976160641738}
   - component: {fileID: 7258157451383546663}
   - component: {fileID: 2206680217342061100}
+  - component: {fileID: 7280350403941098356}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -59,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8396226, g: 0.69609135, b: 0.18614274, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -118,6 +119,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7280350403941098356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3399097002384783892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d12f8df921604a3780f149eaf98eab00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ui: inventory
 --- !u!1 &3432800169866687097
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,6 +144,7 @@ GameObject:
   - component: {fileID: 8621630467323610508}
   - component: {fileID: 3167452559489419497}
   - component: {fileID: 7916735840782148447}
+  - component: {fileID: 401669449564832909}
   m_Layer: 5
   m_Name: Spells
   m_TagString: Untagged
@@ -177,7 +192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.07262372, g: 0.65897506, b: 0.9056604, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -236,6 +251,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &401669449564832909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3432800169866687097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d12f8df921604a3780f149eaf98eab00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ui: spells
 --- !u!1 &3886284674067138056
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,6 +276,7 @@ GameObject:
   - component: {fileID: 399432167252801167}
   - component: {fileID: 6932553243173712791}
   - component: {fileID: 1766671977908724892}
+  - component: {fileID: 1198568941281789730}
   m_Layer: 5
   m_Name: Equipment
   m_TagString: Untagged
@@ -295,7 +324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4083814, g: 0.8584906, b: 0.17412782, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -354,6 +383,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1198568941281789730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3886284674067138056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d12f8df921604a3780f149eaf98eab00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ui: equipment
 --- !u!1 &3922992401488446055
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,6 +408,7 @@ GameObject:
   - component: {fileID: 4100427628222434802}
   - component: {fileID: 8408782063056832559}
   - component: {fileID: 1433897186372480183}
+  - component: {fileID: 1116060919910567524}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -413,7 +456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5188679, g: 0.056292284, b: 0.056292284, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -472,6 +515,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1116060919910567524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3922992401488446055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d12f8df921604a3780f149eaf98eab00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ui: menu
 --- !u!1 &6491394384634020759
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,6 +540,7 @@ GameObject:
   - component: {fileID: 4021928278809567267}
   - component: {fileID: 2385801597934480895}
   - component: {fileID: 2054504882416480517}
+  - component: {fileID: 2471982725406274639}
   m_Layer: 5
   m_Name: Stats
   m_TagString: Untagged
@@ -531,7 +588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5696869, g: 0.07676221, b: 0.7075472, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -590,6 +647,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2471982725406274639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6491394384634020759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d12f8df921604a3780f149eaf98eab00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ui: stats
 --- !u!1 &7701858690869208215
 GameObject:
   m_ObjectHideFlags: 0
@@ -601,6 +671,7 @@ GameObject:
   - component: {fileID: 3832938178828833552}
   - component: {fileID: 4235103045197739796}
   - component: {fileID: 7883674184889670150}
+  - component: {fileID: 8784101003052475215}
   m_Layer: 5
   m_Name: Radial Menu
   m_TagString: Untagged
@@ -652,3 +723,16 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &8784101003052475215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7701858690869208215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6226f61762bc427e81f104cf8b95becd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 360

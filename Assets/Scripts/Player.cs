@@ -24,13 +24,13 @@ public class Player : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.Instance.OnShowUI += EnableUIMode;
-        EventManager.Instance.OnHideUI += DisableUIMode;
+        UIManager.Instance.OnShowUI += EnableUIMode;
+        UIManager.Instance.OnHideUI += DisableUIMode;
     }
     private void OnDisable()
     {
-        EventManager.Instance.OnShowUI -= EnableUIMode;
-        EventManager.Instance.OnHideUI -= DisableUIMode;
+        UIManager.Instance.OnShowUI -= EnableUIMode;
+        UIManager.Instance.OnHideUI -= DisableUIMode;
     }
     private void EnableUIMode()
     {

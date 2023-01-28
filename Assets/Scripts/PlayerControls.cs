@@ -46,27 +46,18 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Open Inventory"",
-                    ""type"": ""Button"",
-                    ""id"": ""2fba0770-c1d3-4f31-9ac3-9f15a3cb5848"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Open Equipment"",
-                    ""type"": ""Button"",
-                    ""id"": ""bd4049bc-c05e-48d0-a863-22637652fdf0"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Pick Up"",
                     ""type"": ""Button"",
                     ""id"": ""e2621972-176c-4947-bd02-7fab51dd9270"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Open Radial Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""53efd526-7858-4548-91b0-e769a374e46c"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -98,34 +89,23 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""89ea5f2d-8143-497a-b384-1f5d080bb2ed"",
-                    ""path"": ""<Keyboard>/i"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Open Inventory"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e33fb4b2-4892-4aae-9bf1-eee403c39a8d"",
-                    ""path"": ""<Keyboard>/f"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Open Equipment"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""573a4433-6401-4733-a17c-c4399f02bb57"",
                     ""path"": ""<Keyboard>/z"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Pick Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9942374f-9b76-4c31-86f5-f50e2923ff6e"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Open Radial Menu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -136,18 +116,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
             ""id"": ""ddd14e3c-0efe-4e78-9d2b-70c6cf20903e"",
             ""actions"": [
                 {
-                    ""name"": ""Close Inventory"",
+                    ""name"": ""Close Menu"",
                     ""type"": ""Button"",
-                    ""id"": ""a0894ade-3fa5-4865-ac8e-96893494682a"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Close Equipment"",
-                    ""type"": ""Button"",
-                    ""id"": ""2f75a568-ef4b-4fcb-b413-5deb3ab50f15"",
+                    ""id"": ""576ba412-97c1-4d53-9c67-4a8af92fbd23"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -157,23 +128,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""4dbab324-ebca-4327-bd8f-cac77d2fa252"",
-                    ""path"": ""<Keyboard>/i"",
+                    ""id"": ""5bbf314d-9e1e-4a70-b3c1-34b131245f83"",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Close Inventory"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""360f5f01-0b9f-4626-96c8-fdc8d0222222"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Close Equipment"",
+                    ""action"": ""Close Menu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -186,13 +146,11 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_Fire = m_Gameplay.FindAction("Fire", throwIfNotFound: true);
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
-        m_Gameplay_OpenInventory = m_Gameplay.FindAction("Open Inventory", throwIfNotFound: true);
-        m_Gameplay_OpenEquipment = m_Gameplay.FindAction("Open Equipment", throwIfNotFound: true);
         m_Gameplay_PickUp = m_Gameplay.FindAction("Pick Up", throwIfNotFound: true);
+        m_Gameplay_OpenRadialMenu = m_Gameplay.FindAction("Open Radial Menu", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
-        m_UI_CloseInventory = m_UI.FindAction("Close Inventory", throwIfNotFound: true);
-        m_UI_CloseEquipment = m_UI.FindAction("Close Equipment", throwIfNotFound: true);
+        m_UI_CloseMenu = m_UI.FindAction("Close Menu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -254,18 +212,16 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private IGameplayActions m_GameplayActionsCallbackInterface;
     private readonly InputAction m_Gameplay_Fire;
     private readonly InputAction m_Gameplay_Move;
-    private readonly InputAction m_Gameplay_OpenInventory;
-    private readonly InputAction m_Gameplay_OpenEquipment;
     private readonly InputAction m_Gameplay_PickUp;
+    private readonly InputAction m_Gameplay_OpenRadialMenu;
     public struct GameplayActions
     {
         private @PlayerControls m_Wrapper;
         public GameplayActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Fire => m_Wrapper.m_Gameplay_Fire;
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
-        public InputAction @OpenInventory => m_Wrapper.m_Gameplay_OpenInventory;
-        public InputAction @OpenEquipment => m_Wrapper.m_Gameplay_OpenEquipment;
         public InputAction @PickUp => m_Wrapper.m_Gameplay_PickUp;
+        public InputAction @OpenRadialMenu => m_Wrapper.m_Gameplay_OpenRadialMenu;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -281,15 +237,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Move.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
-                @OpenInventory.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOpenInventory;
-                @OpenInventory.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOpenInventory;
-                @OpenInventory.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOpenInventory;
-                @OpenEquipment.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOpenEquipment;
-                @OpenEquipment.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOpenEquipment;
-                @OpenEquipment.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOpenEquipment;
                 @PickUp.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPickUp;
                 @PickUp.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPickUp;
                 @PickUp.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPickUp;
+                @OpenRadialMenu.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOpenRadialMenu;
+                @OpenRadialMenu.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOpenRadialMenu;
+                @OpenRadialMenu.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOpenRadialMenu;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -300,15 +253,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @OpenInventory.started += instance.OnOpenInventory;
-                @OpenInventory.performed += instance.OnOpenInventory;
-                @OpenInventory.canceled += instance.OnOpenInventory;
-                @OpenEquipment.started += instance.OnOpenEquipment;
-                @OpenEquipment.performed += instance.OnOpenEquipment;
-                @OpenEquipment.canceled += instance.OnOpenEquipment;
                 @PickUp.started += instance.OnPickUp;
                 @PickUp.performed += instance.OnPickUp;
                 @PickUp.canceled += instance.OnPickUp;
+                @OpenRadialMenu.started += instance.OnOpenRadialMenu;
+                @OpenRadialMenu.performed += instance.OnOpenRadialMenu;
+                @OpenRadialMenu.canceled += instance.OnOpenRadialMenu;
             }
         }
     }
@@ -317,14 +267,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     // UI
     private readonly InputActionMap m_UI;
     private IUIActions m_UIActionsCallbackInterface;
-    private readonly InputAction m_UI_CloseInventory;
-    private readonly InputAction m_UI_CloseEquipment;
+    private readonly InputAction m_UI_CloseMenu;
     public struct UIActions
     {
         private @PlayerControls m_Wrapper;
         public UIActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @CloseInventory => m_Wrapper.m_UI_CloseInventory;
-        public InputAction @CloseEquipment => m_Wrapper.m_UI_CloseEquipment;
+        public InputAction @CloseMenu => m_Wrapper.m_UI_CloseMenu;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -334,22 +282,16 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_UIActionsCallbackInterface != null)
             {
-                @CloseInventory.started -= m_Wrapper.m_UIActionsCallbackInterface.OnCloseInventory;
-                @CloseInventory.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnCloseInventory;
-                @CloseInventory.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnCloseInventory;
-                @CloseEquipment.started -= m_Wrapper.m_UIActionsCallbackInterface.OnCloseEquipment;
-                @CloseEquipment.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnCloseEquipment;
-                @CloseEquipment.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnCloseEquipment;
+                @CloseMenu.started -= m_Wrapper.m_UIActionsCallbackInterface.OnCloseMenu;
+                @CloseMenu.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnCloseMenu;
+                @CloseMenu.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnCloseMenu;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @CloseInventory.started += instance.OnCloseInventory;
-                @CloseInventory.performed += instance.OnCloseInventory;
-                @CloseInventory.canceled += instance.OnCloseInventory;
-                @CloseEquipment.started += instance.OnCloseEquipment;
-                @CloseEquipment.performed += instance.OnCloseEquipment;
-                @CloseEquipment.canceled += instance.OnCloseEquipment;
+                @CloseMenu.started += instance.OnCloseMenu;
+                @CloseMenu.performed += instance.OnCloseMenu;
+                @CloseMenu.canceled += instance.OnCloseMenu;
             }
         }
     }
@@ -358,13 +300,11 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     {
         void OnFire(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
-        void OnOpenInventory(InputAction.CallbackContext context);
-        void OnOpenEquipment(InputAction.CallbackContext context);
         void OnPickUp(InputAction.CallbackContext context);
+        void OnOpenRadialMenu(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
-        void OnCloseInventory(InputAction.CallbackContext context);
-        void OnCloseEquipment(InputAction.CallbackContext context);
+        void OnCloseMenu(InputAction.CallbackContext context);
     }
 }

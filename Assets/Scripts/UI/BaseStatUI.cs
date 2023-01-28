@@ -4,9 +4,9 @@ using UnityEngine.UI;
 
 public class BaseStatUI : MonoBehaviour
     {
-        [SerializeField] private Text value;
+        [SerializeField] protected Text value;
         public string statName;
-
+        public StatsUI container;
         public virtual void Refresh(Stat stat)
         {
             value.text = stat.Value.ToString();

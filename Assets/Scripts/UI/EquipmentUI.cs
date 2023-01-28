@@ -18,17 +18,7 @@ public class EquipmentUI : BaseUI
             slots[child.equipmentType] = child;
         }
     }
-    public override void Show()
-    {
-        base.Show();
-        EventManager.Instance.ShowUI();
-    }
-
-    public override void Hide()
-    {
-        base.Hide();
-        EventManager.Instance.HideUI();
-    }
+  
     public void SubscribeToGameFoundationEvents()
     {
         GameFoundationSdk.inventory.itemAddedToCollection += OnItemAddedToEquipment;

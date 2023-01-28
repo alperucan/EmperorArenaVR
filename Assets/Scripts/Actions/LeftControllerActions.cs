@@ -41,10 +41,9 @@ public class LeftControllerActions : MonoBehaviour, XRIDefaultInputActions.IXRIL
 
     public void OnPrimaryButtonPress(InputAction.CallbackContext context)
     {
-        if (context.performed) 
+        if (context.performed)
         {
-            text.text = "OnSecondaryButtonPress Left";
-            UIManager.Instance.InventoryUI.Show();
+            UIManager.Instance.Hide();
         }
     }
 
@@ -52,8 +51,7 @@ public class LeftControllerActions : MonoBehaviour, XRIDefaultInputActions.IXRIL
     {
         if (context.performed)
         {
-            text.text = "OnSecondaryButtonPress Left";
-            UIManager.Instance.EquipmentUI.Show();
+            UIManager.Instance.Show(Constants.UI.RADIAL_MENU);
         }
     }
 

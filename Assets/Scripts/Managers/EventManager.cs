@@ -6,11 +6,7 @@ using UnityEngine.GameFoundation;
 
 public class EventManager : Singleton<EventManager>
 {
-    public event Action OnShowUI;
-    public event Action OnHideUI;
-
-    public void ShowUI() => OnShowUI?.Invoke();
-    public void HideUI() => OnShowUI?.Invoke();
+  
 
 
     public event Action<InventoryItem> OnEquip;

@@ -6,55 +6,46 @@ using UnityEngine.GameFoundation;
 
 public class Equipment : MonoBehaviour
 {
-    public ItemMap Items { get; private set; }
-  
-   
-    public event Action<InventoryItem> OnEquip;
+    private ItemMap items;
+    public ItemMap Items => items;
+    private string id;
+    public event Action OnEquipmentInitialized;
     public event Action<InventoryItem> OnUnEquip;
+    public event Action<InventoryItem> OnEquip;
 
-   // public void Equip(InventoryItem inventoryItem) => OnEquip?.Invoke(inventoryItem);
-   // public void UnEquip(InventoryItem inventoryItem) => OnUnEquip?.Invoke(inventoryItem);
-    
-   
-    private void Start()
-    {
-        if(Items == null) 
-        {
-            Items = GameFoundationSdk.inventory.CreateMap();
-        }
-    }
     private void OnEnable()
     {
-        EventManager.Instance.OnEquip += Equip;
-        EventManager.Instance.OnUnEquip += UnEquip;
-    }
-    private void OnDisable()
-    {
-        EventManager.Instance.OnEquip -= Equip;
-        EventManager.Instance.OnUnEquip -= UnEquip;
-    }
-  
-    
-    public void Equip(InventoryItem inventoryItem) 
-    {
-        string equipmentType = inventoryItem.definition.GetStaticProperty("equipmentType").AsString();
-        Items.Set(equipmentType, inventoryItem);
-       // string type = inventoryItem.definition.GetStaticProperty("type").AsString();
-        //if(type=="weapon")
-          //  EnablePrimaryWeapon(inventoryItem);
-       OnEquip?.Invoke(inventoryItem);   
+        GameFoundationSdk.initialized += Initialize;
     }
 
-    public void UnEquip(InventoryItem inventoryItem) 
+    private void OnDisable()
     {
-        Items.Remove(inventoryItem);
-        OnUnEquip?.Invoke(inventoryItem);
-        // string type = inventoryItem.definition.GetStaticProperty("type").AsString();
-        //if(type=="weapon")
-          //  DisablePrimaryWeapon();
-       
-    
+        GameFoundationSdk.initialized -= Initialize;
     }
+        
+    public void Initialize()
+    {
+        items = !String.IsNullOrEmpty(id) ? GameFoundationSdk.inventory.FindCollection<ItemMap>(id) : GameFoundationSdk.inventory.CreateMap();
+        OnEquipmentInitialized?.Invoke();
+    }
+        
+    public void Equip(InventoryItem inventoryItem)
+    {
+        string equipmentType = inventoryItem.definition.GetStaticProperty("equipmentType").AsString();
+            
+        if (items.IsSlotSet(equipmentType))
+            UnEquip(items.Get(equipmentType));
+            
+        items.Set(equipmentType, inventoryItem);
+        OnEquip?.Invoke(inventoryItem);
+    }
+
+    public void UnEquip(InventoryItem inventoryItem)
+    {
+        items.Remove(inventoryItem);
+        OnUnEquip?.Invoke(inventoryItem);
+    }
+
 
 
 }
