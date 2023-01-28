@@ -27,6 +27,17 @@ public class StatsUI : BaseUI
             close.onClick.AddListener(delegate { Hide(); });
         }
 
+        public override void Show()
+        {
+            base.Show();
+            EventManager.Instance.ShowUI();
+        }
+
+        public override void Hide()
+        {
+            base.Hide();
+            EventManager.Instance.HideUI();
+        }
         private void Refresh()
         {
             foreach (var statUi in statUis)
