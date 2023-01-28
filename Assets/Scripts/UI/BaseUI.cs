@@ -7,7 +7,7 @@ public class BaseUI : MonoBehaviour
     public bool isShowing => canvasGroup.alpha == 1;
     private CanvasGroup canvasGroup;
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
     }
@@ -17,7 +17,6 @@ public class BaseUI : MonoBehaviour
         canvasGroup.alpha = 1;
         canvasGroup.blocksRaycasts = true;
         canvasGroup.interactable = true;
-        EventManager.Instance.ShowUI();
 
     }
 
@@ -26,7 +25,6 @@ public class BaseUI : MonoBehaviour
         canvasGroup.alpha = 0;
         canvasGroup.blocksRaycasts = false;
         canvasGroup.interactable = false;
-        EventManager.Instance.HideUI();
     }
 
 }

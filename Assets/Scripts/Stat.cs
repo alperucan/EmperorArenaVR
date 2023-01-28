@@ -4,12 +4,12 @@
  using System.Linq;
  using UnityEngine;
 
- public class Stat
+ [Serializable]
+ public class Stat : BaseStat
  {
-     public string name;
-     [SerializeField] private int baseValue;
+     public event Action<Stat> OnChangedValue; 
 
-     public int BaseValue
+     public virtual int BaseValue
      {
          get { return baseValue; }
          set
@@ -19,12 +19,12 @@
          }
      }
 
+     
+     
+     public int Value { get; set; }
      private List<StatModifier> modifiers;
      public ReadOnlyCollection<StatModifier> Modifiers => modifiers.AsReadOnly();
-     public int Value { get; set; }
-
-     public event Action<Stat> OnChangedValue;
-
+     
      public void AddModifier(StatModifier modifier)
      {
          modifiers.Add(modifier);
@@ -36,10 +36,9 @@
          modifiers.Remove(modifier);
          CalculateValue();
      }
-     public Stat(string name, int baseValue)
+     public Stat(string name, int baseValue): base(name,baseValue)
      {
-         this.name = name;
-         BaseValue = baseValue;
+         modifiers = new List<StatModifier>();
          Value = baseValue;
 
      }
