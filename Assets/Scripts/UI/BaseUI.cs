@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BaseUI : MonoBehaviour
 {
+    public bool isShowing => canvasGroup.alpha == 1;
     private CanvasGroup canvasGroup;
 
     protected virtual void Awake()

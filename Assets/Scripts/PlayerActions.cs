@@ -2,18 +2,19 @@
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
-
-public class PlayerActions : MonoBehaviour, PlayerControls.IPlayerActions
+public class PlayerActions : MonoBehaviour, PlayerControls.IGameplayActions
 {
     private PlayerControls controls;
     private Animator animator;
-    private NavMeshAgent agent;
+    private UnityEngine.AI.NavMeshAgent agent;
     private Camera mainCamera;
+    private Inventory inventory;
     private static readonly int MovementSpeed = Animator.StringToHash("movementSpeed");
 
     private void Awake()
     {
-        agent = GetComponent<NavMeshAgent>();
+        inventory = GetComponent<Inventory>();
+        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         animator = GetComponent<Animator>();
         mainCamera=Camera.main;
     }
@@ -23,14 +24,18 @@ public class PlayerActions : MonoBehaviour, PlayerControls.IPlayerActions
         if (controls == null)
         {
             controls = new PlayerControls();
-            controls.Player.SetCallbacks(this);
+            controls.Gameplay.SetCallbacks(this);
         }
-        controls.Player.Enable();
+        controls.Gameplay.Enable();
+        EventManager.Instance.OnShowUI += controls.Gameplay.Disable;
+        EventManager.Instance.OnHideUI += controls.Gameplay.Enable;
     }
 
     private void OnDisable()
     {
-        controls.Player.Disable();
+        controls.Gameplay.Disable();
+        EventManager.Instance.OnShowUI += controls.Gameplay.Disable;
+        EventManager.Instance.OnHideUI += controls.Gameplay.Enable;
     }
 
     private void Update()
@@ -43,13 +48,14 @@ public class PlayerActions : MonoBehaviour, PlayerControls.IPlayerActions
     {
         if (context.performed)
         {
-            Vector2 mousePosition = controls.Player.Move.ReadValue<Vector2>();
+            Debug.Log("aasdad");
+            Vector2 mousePosition = controls.Gameplay.Move.ReadValue<Vector2>();
             Ray ray = mainCamera.ScreenPointToRay(mousePosition);
             RaycastHit hit;
             bool hasHit = Physics.Raycast(ray, out hit);
             if (hasHit)
             {
-                Debug.Log(mousePosition);
+               // Debug.Log(mousePosition);
                 agent.SetDestination(hit.point);
             }
         }
@@ -59,5 +65,35 @@ public class PlayerActions : MonoBehaviour, PlayerControls.IPlayerActions
     {
        
     }
-    
+
+    public void OnOpenInventory(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            UIManager.Instance.InventoryUI.Show();
+
+        }
+    }
+
+    public void OnOpenEquipment(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            UIManager.Instance.EquipmentUI.Show();
+        }
+    }
+
+    public void OnPickUp(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            //text.text = "OnSelect Right";
+            var hits = Physics.OverlapSphere(transform.position, 0.5f, 1 << LayerMask.NameToLayer("Item"));
+            foreach (var hit in hits)
+            {
+                var item = hit.GetComponent<Item>();
+                inventory.Add(item);
+            }
+        }
+    }
 }

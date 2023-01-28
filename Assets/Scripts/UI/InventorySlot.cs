@@ -11,5 +11,15 @@ public class InventorySlot : BaseSlot
         base.Awake();
         // player click on a item, equip the item
         button.onClick.AddListener( delegate { EventManager.Instance.Equip(inventoryItem); } );
+    //     button.onClick.AddListener(delegate
+    //     {
+    //         
+    //         if (inventoryItem != null)
+    //         {
+    //             Debug.Log("Inventory slot clicked!");
+    //             equipment.UnEquip(inventoryItem);
+    //         }
+    //             
+    //     });
     }
 }
