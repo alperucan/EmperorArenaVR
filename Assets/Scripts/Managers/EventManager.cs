@@ -18,4 +18,8 @@ public class EventManager : Singleton<EventManager>
 
     public void Equip(InventoryItem inventoryItem) => OnEquip?.Invoke(inventoryItem);
     public void UnEquip(InventoryItem inventoryItem) => OnUnEquip?.Invoke(inventoryItem);
+
+    public event Action<Enemy> OnEnemyDied;
+
+    public void EnemyDied(Enemy enemy) => OnEnemyDied?.Invoke(enemy);
 }
