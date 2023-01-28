@@ -10,8 +10,9 @@ using UnityEngine.UI;
 public class RightControllerActions : MonoBehaviour, XRIDefaultInputActions.IXRIRightHandActions,XRIDefaultInputActions.IXRIRightHandInteractionActions
 {
     private XRIDefaultInputActions controls;
-    [SerializeField] private Player player;
+    [SerializeField] private WeaponController weaponController;
     [SerializeField] private Text text;
+    [SerializeField] private Inventory inventory;
     private void OnEnable()
     {
         if (controls == null)
@@ -21,100 +22,7 @@ public class RightControllerActions : MonoBehaviour, XRIDefaultInputActions.IXRI
         }
         controls.XRIRightHand.Enable();
     }
-   /*/// <summary>
-   /// TODO "Equip a weapon videosunda player.Equipment var ama hatali unutma"
-   /// </summary>
-   /// <param name="context"></param>
-    void XRIDefaultInputActions.IXRIRightHandInteractionActions.OnActivate(InputAction.CallbackContext context)
-    {
-       // if (context.performed) 
-        //{
-          //  var go = player.Equipment.GetCurrentPrimaryWeapon();
-           // if(go != null) 
-            //{
-              //  go.GetComponent<IActivatable>()?.Activate();
-           // }
-        //}
-    }
-
-    void XRIDefaultInputActions.IXRIRightHandInteractionActions.OnActivateValue(InputAction.CallbackContext context)
-    {
-       
-    }
-
-    void XRIDefaultInputActions.IXRIRightHandActions.OnHapticDevice(InputAction.CallbackContext context)
-    {
-       
-    }
-
-    void XRIDefaultInputActions.IXRIRightHandActions.OnPosition(InputAction.CallbackContext context)
-    {
-       
-    }
-
-    void XRIDefaultInputActions.IXRIRightHandActions.OnPrimaryButtonPress(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            UIManager.Instance.StatsUI.Hide();
-        }
-    }
-
-    void XRIDefaultInputActions.IXRIRightHandInteractionActions.OnRotateAnchor(InputAction.CallbackContext context)
-    {
-    
-    }
-
-    void XRIDefaultInputActions.IXRIRightHandActions.OnRotation(InputAction.CallbackContext context)
-    {
-       
-    }
-
-    void XRIDefaultInputActions.IXRIRightHandActions.OnSecondaryButtonPress(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            UIManager.Instance.StatsUI.Show();
-        }
-    }
-
-    void XRIDefaultInputActions.IXRIRightHandInteractionActions.OnSelect(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            var hits = Physics.OverlapSphere(transform.position, 0.5f, 1 << LayerMask.NameToLayer("Item"));
-            foreach (var hit in hits)
-            {
-                var item = hit.GetComponent<Item>();
-                player.Inventory.Add(item);
-            }
-        }
-    }
-
-    void XRIDefaultInputActions.IXRIRightHandInteractionActions.OnSelectValue(InputAction.CallbackContext context)
-    {
-       
-    }
-
-    void XRIDefaultInputActions.IXRIRightHandActions.OnTrackingState(InputAction.CallbackContext context)
-    {
-       
-    }
-
-    void XRIDefaultInputActions.IXRIRightHandInteractionActions.OnTranslateAnchor(InputAction.CallbackContext context)
-    {
-       
-    }
-
-    void XRIDefaultInputActions.IXRIRightHandInteractionActions.OnUIPress(InputAction.CallbackContext context)
-    {
-       
-    }
-
-    void XRIDefaultInputActions.IXRIRightHandInteractionActions.OnUIPressValue(InputAction.CallbackContext context)
-    {
-      
-    }*/
+  
    public void OnPosition(InputAction.CallbackContext context)
    {
       // throw new System.NotImplementedException();
@@ -162,7 +70,7 @@ public class RightControllerActions : MonoBehaviour, XRIDefaultInputActions.IXRI
            foreach (var hit in hits)
            {
                var item = hit.GetComponent<Item>();
-               player.Inventory.Add(item);
+               inventory.Add(item);
            }
        }
    }
@@ -177,11 +85,9 @@ public class RightControllerActions : MonoBehaviour, XRIDefaultInputActions.IXRI
        if (context.performed)
        {
            text.text = "OnActivate Right";
-           // var go = player.Equipment.GetCurrentPrimaryWeapon();
-           // if(go != null) 
-           //{
-           //   go.GetComponent<IActivatable>()?.Activate();
-           //}
+           var go = weaponController.GetCurrent();
+           if(go !=null)
+               go.GetComponent<IActivatable>()?.Activate();
        }
    }
 

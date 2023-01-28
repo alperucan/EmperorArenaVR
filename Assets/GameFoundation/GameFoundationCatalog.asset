@@ -32,6 +32,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Tags: []
   m_CatalogAsset: {fileID: 11400000}
+--- !u!114 &-1094424249665947634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcbd052539327467295d2009d33aa660, type: 3}
+  m_Name: Item_shield
+  m_EditorClassIdentifier: 
+  m_DisplayName: Shield
+  m_Key: shield
+  m_Tags: []
+  m_StaticPropertyKeys:
+  - equipmentType
+  - sprite
+  - type
+  m_StaticPropertyValues:
+  - <type>k__BackingField: 3
+    m_ValueType:
+      longValue: 0
+    m_StringValue: offHand
+  - <type>k__BackingField: 4
+    m_ValueType:
+      longValue: 0
+    m_StringValue: sprites/shield_01
+  - <type>k__BackingField: 3
+    m_ValueType:
+      longValue: 0
+    m_StringValue: weapon
+  m_InitialAllocation: 0
+  m_IsStackableFlag: 0
+  m_InitialQuantityPerStack: 1
+  m_MutablePropertyKeys:
+  - physicalDefense
+  m_MutablePropertyDefaultValues:
+  - <type>k__BackingField: 0
+    m_ValueType:
+      longValue: 5
+    m_StringValue: 
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49,6 +91,7 @@ MonoBehaviour:
   - {fileID: -7306426153403211302}
   - {fileID: 7471737651646714376}
   - {fileID: 5458824096150429412}
+  - {fileID: -1094424249665947634}
 --- !u!114 &5458824096150429412
 MonoBehaviour:
   m_ObjectHideFlags: 0
