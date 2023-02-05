@@ -12,7 +12,7 @@ using UnityEngine.InputSystem;
                 controls = new PlayerControls();
                 controls.UI.SetCallbacks(this);
             }
-            Debug.Log("UIActions enabled");
+           // Debug.Log("UIActions enabled");
             UIManager.Instance.OnShowUI += controls.UI.Enable;
             UIManager.Instance.OnHideUI += controls.UI.Disable;
         }
@@ -27,7 +27,7 @@ using UnityEngine.InputSystem;
         {
             if (context.performed)
             {
-                Debug.Log("Close Radial menu");
+               // Debug.Log("Close Radial menu");
                 UIManager.Instance.Hide();
             }
         }

@@ -42359,7 +42359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41199f63bd5a440d80f2ff953f3bc7ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
+  enemy: {fileID: 5949772447847250099}
   eperienceTextPrefab: {fileID: 6358125778986472143, guid: 9c4e01d051f1f5c45bf19047500934cf,
     type: 3}
   damageTextPrefab: {fileID: 1792078309659393697, guid: a59c18ada5f48fc4ca5cc21b7c329949,
