@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.GameFoundation;
 
-public class Inventory : MonoBehaviour
+public class Inventory : MonoBehaviour,ISavable
 {
     private string id;
     public ItemList Items => items;
@@ -36,7 +36,9 @@ public class Inventory : MonoBehaviour
 
     public void Initialize()
     {
-        items = !String.IsNullOrEmpty(id) ? GameFoundationSdk.inventory.FindCollection<ItemList>(id) : GameFoundationSdk.inventory.CreateList();
+        items = !String.IsNullOrEmpty(id) 
+            ? GameFoundationSdk.inventory.FindCollection<ItemList>(id) 
+            : GameFoundationSdk.inventory.CreateList();
         ICollection<IItemCollection> collection = new List<IItemCollection>();
         GameFoundationSdk.inventory.GetCollections(collection);
         OnInventoryInitialized?.Invoke();
@@ -62,4 +64,17 @@ public class Inventory : MonoBehaviour
         items.Remove(inventoryItem);
     }
 
+    public object SaveData()
+    {
+        return new InventoryData()
+        {
+            id = Items.id
+        };
+    }
+
+    public void LoadData(object data)
+    {
+        InventoryData inventoryData = (InventoryData)data;
+        id = inventoryData.id;
+    }
 }

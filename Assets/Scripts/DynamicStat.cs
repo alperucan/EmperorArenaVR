@@ -1,9 +1,11 @@
 ﻿
     using System;
     using UnityEngine;
-
+    using System.Collections.Generic;
     public class DynamicStat : Stat
     {
+        [SerializeField]private int currentValue;
+        public event Action<DynamicStat> OnChangedCurrentValue;
         public int CurrentValue {
             get
             {
@@ -17,11 +19,14 @@
             
             
         }
-        private int currentValue;
-        public event Action<DynamicStat> OnChangedCurrentValue;
+       
 
         public DynamicStat(string name, int baseValue) : base(name, baseValue)
         {
             CurrentValue = baseValue;
+        }
+        public DynamicStat(string name, int baseValue, List<StatModifier> modifiers, int value, int currentValue) : base(name, baseValue, modifiers, value)
+        {
+            CurrentValue = currentValue;
         }
     }

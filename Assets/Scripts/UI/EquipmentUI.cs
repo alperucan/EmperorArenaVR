@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.GameFoundation;
@@ -14,35 +15,41 @@ public class EquipmentUI : BaseUI
         base.Awake();
         foreach(var child in slotParent.GetComponentsInChildren<EquipmentSlot>(true))
         {
-
+            child.equipment = equipment;
             slots[child.equipmentType] = child;
         }
     }
-  
-    public void SubscribeToGameFoundationEvents()
+
+    private void OnEnable()
     {
-        GameFoundationSdk.inventory.itemAddedToCollection += OnItemAddedToEquipment;
-        GameFoundationSdk.inventory.itemRemovedFromCollection += OnItemRemovedToEquipment;
+        equipment.OnEquipmentInitialized += Initialize;
+        equipment.OnEquip += AddItemToEquipment;
+        equipment.OnUnEquip += RemoveItemFromEquipment;
+        
     }
-    public void UnSubscribeToGameFoundationEvents()
+    private void OnDisable()
     {
-        GameFoundationSdk.inventory.itemAddedToCollection -= OnItemAddedToEquipment;
-        GameFoundationSdk.inventory.itemRemovedFromCollection -= OnItemRemovedToEquipment;
+        equipment.OnEquip -= AddItemToEquipment;
+        equipment.OnUnEquip -= RemoveItemFromEquipment;
+        equipment.OnEquipmentInitialized -= Initialize;
     }
-    public void OnItemAddedToEquipment(IItemCollection itemCollection,InventoryItem inventoryItem) 
-    { 
-        if(equipment.Items.id == itemCollection.id) 
+
+    private void RemoveItemFromEquipment(InventoryItem inventoryItem)
+    {
+        slots[inventoryItem.definition.GetStaticProperty("equipmentType").AsString()].UnSet();
+    }
+
+    private void AddItemToEquipment(InventoryItem inventoryItem)
+    {
+        slots[inventoryItem.definition.GetStaticProperty("equipmentType").AsString()].Set(inventoryItem);
+    }
+   
+    private void Initialize()
+    {
+        foreach (InventoryItem inventoryItem in equipment.Items)
         {
             slots[inventoryItem.definition.GetStaticProperty("equipmentType").AsString()].Set(inventoryItem);
         }
     }
-    public void OnItemRemovedToEquipment(IItemCollection itemCollection, InventoryItem inventoryItem)
-    {
-        if (equipment.Items.id == itemCollection.id)
-        {
-            slots[inventoryItem.definition.GetStaticProperty("equipmentType").AsString()].UnSet();
-        }
-    }
-
 
 }

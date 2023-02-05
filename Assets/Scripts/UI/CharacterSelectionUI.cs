@@ -44,7 +44,7 @@ public class CharacterSelectionUI : BaseUI
 
         [SerializeField] private Button randomStatsButton;
         [SerializeField] private Button acceptButton;
-        [SerializeField] private GameObject mirror;
+       // [SerializeField] private GameObject mirror;
         
         
         private int hairId;
@@ -92,14 +92,14 @@ public class CharacterSelectionUI : BaseUI
         public override void Show()
         {
             base.Show();
-            if(mirror)
-                mirror.SetActive(true);
+            //if(mirror)
+               // mirror.SetActive(true);
         }
         public override void Hide()
         {
             base.Hide();
-            if(mirror)
-                mirror.SetActive(false);
+            //if(mirror)
+               // mirror.SetActive(false);
         
         }
         public void Awake()
@@ -123,6 +123,11 @@ public class CharacterSelectionUI : BaseUI
                lightSkinButton.onClick.AddListener(delegate { ChangeSkinColor(new Color(1f, 204f / 255, 174f / 255)); });
                tannedSkinButton.onClick.AddListener(delegate { ChangeSkinColor(new Color(180f / 255, 127f / 255, 94f / 255)); });
                darkSkinButton.onClick.AddListener(delegate { ChangeSkinColor(new Color(91f / 255, 50f / 255, 26f / 255)); });
+               
+               for (int i = 0; i < statValueTexts.Count; i++)
+               {
+                   statValueTexts[i].text = $"{stats[statLabelTexts[i].text.ToLower()].BaseValue}";
+               }
         }
         /// <summary>
         /// TODO Stats duzelince yap

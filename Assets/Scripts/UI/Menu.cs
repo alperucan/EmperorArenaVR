@@ -15,5 +15,6 @@ public class Menu : BaseUI
     {
         base.Awake();
         closeButton.onClick.AddListener(UIManager.Instance.Hide);
+        saveButton.onClick.AddListener(SaveManager.Instance.Save);
     }
 }

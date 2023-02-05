@@ -4,15 +4,15 @@ using UnityEngine;
 using UnityEngine.GameFoundation;
 
 
-public abstract class WeaponController : MonoBehaviour
+public abstract class WeaponController : MonoBehaviour,ISavable
 {
         [SerializeField] private Transform weaponsParents;
         [SerializeField] private List<GameObject> weapons;
         [SerializeField] private Equipment equipment;
         [SerializeField] private string equipmentType;
         
-        [SerializeField]private int currentId;
-
+       // [SerializeField]private int currentId;
+       private int currentId=-1;
         private void OnEnable()
         {
             equipment.OnEquip += Equip;
@@ -31,8 +31,8 @@ public abstract class WeaponController : MonoBehaviour
             {
                 Debug.Log("Weapon Controller Equip");
                 Debug.Log("inventoryItem.definition.displayName " +inventoryItem.definition.displayName);
-                //why (Lenght -3) cuz GameObject.name_XX den _XX cikar 
-                int id = weapons.FindIndex(go => go.name.Substring(0,go.name.Length-3) == inventoryItem.definition.displayName);
+               
+                int id = weapons.FindIndex(go => go.name == inventoryItem.definition.displayName);
                 Debug.Log("Weapon id : " +id);
                 EnableWeapon(id);
             }
@@ -78,6 +78,20 @@ public abstract class WeaponController : MonoBehaviour
         {
             return currentId == -1 ? null : weapons[currentId];
         }
-        
+
+        public object SaveData()
+        {
+            return new WeaponData()
+            {
+                id = currentId
+            };
+        }
+
+        public void LoadData(object data)
+        {
+            WeaponData weaponData = (WeaponData)data;
+            if(weaponData.id != -1)
+                EnableWeapon(weaponData.id);
+        }
 }
 

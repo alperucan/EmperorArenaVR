@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6544594681342209801}
   - component: {fileID: 3037482165579015344}
   - component: {fileID: 3632510204874769169}
-  - component: {fileID: -786471852455243263}
+  - component: {fileID: 3595899129622145672}
   m_Layer: 0
   m_Name: Experience Text
   m_TagString: Untagged
@@ -94,7 +94,7 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
---- !u!114 &-786471852455243263
+--- !u!114 &3595899129622145672
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6358125778986472143}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b304d4d842e4f79b3420d52fb7b0e26, type: 3}
+  m_Script: {fileID: 11500000, guid: 5aa4ef2316f944d49e8ca5bfa45adbc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   time: 3

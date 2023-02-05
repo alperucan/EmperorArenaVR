@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.GameFoundation;
 
-public class Equipment : MonoBehaviour
+public class Equipment : MonoBehaviour,ISavable
 {
     private ItemMap items;
     public ItemMap Items => items;
@@ -25,7 +25,9 @@ public class Equipment : MonoBehaviour
         
     public void Initialize()
     {
-        items = !String.IsNullOrEmpty(id) ? GameFoundationSdk.inventory.FindCollection<ItemMap>(id) : GameFoundationSdk.inventory.CreateMap();
+        items = !String.IsNullOrEmpty(id) 
+            ? GameFoundationSdk.inventory.FindCollection<ItemMap>(id) 
+            : GameFoundationSdk.inventory.CreateMap();
         OnEquipmentInitialized?.Invoke();
     }
         
@@ -47,5 +49,17 @@ public class Equipment : MonoBehaviour
     }
 
 
+    public object SaveData()
+    {
+        return new EquipmentData()
+        {
+            id = items.id
+        };
+    }
 
+    public void LoadData(object data)
+    {
+        EquipmentData equipmentData = (EquipmentData) data;
+        id = equipmentData.id;
+    }
 }

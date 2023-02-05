@@ -30,11 +30,10 @@ public class FloatingTextPool : MonoBehaviour
         floatingText.GetComponent<TextMesh>().text = $"{damage}";
     }
 
-    private void ShowExperienceReward()
+    private void ShowExperienceReward(Enemy enemy)
     {
         var floatingText = Instantiate(damageTextPrefab, transform.position, transform.rotation);
-        
-        floatingText.GetComponent<TextMesh>().text=$"{enemy.definition.experienceReward}";
 
+        floatingText.GetComponent<TextMesh>().text = $"{enemy.definition.experienceReward}";
     }
 }

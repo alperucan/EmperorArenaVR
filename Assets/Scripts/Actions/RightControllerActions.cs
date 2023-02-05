@@ -11,7 +11,7 @@ public class RightControllerActions : MonoBehaviour, XRIDefaultInputActions.IXRI
 {
     private XRIDefaultInputActions controls;
     [SerializeField] private PrimaryWeaponController primaryWeaponController;
-    //[SerializeField] private Text text;
+    [SerializeField] private Text text;
     //[SerializeField] private Inventory inventory;
     [SerializeField] private Player player;
     private void OnEnable()
@@ -46,24 +46,44 @@ public class RightControllerActions : MonoBehaviour, XRIDefaultInputActions.IXRI
 
    public void OnPrimaryButtonPress(InputAction.CallbackContext context)
    {
-      
-   }
-
-   public void OnSecondaryButtonPress(InputAction.CallbackContext context)
-   {
-     
-   }
-
-   public void OnSelect(InputAction.CallbackContext context)
-   {
        if (context.performed)
        {
-           var hits = Physics.OverlapSphere(transform.position, 0.5f, 1 << LayerMask.NameToLayer("Item"));
+           Debug.Log("deneme");
+           text.text = "Right Click OnPrimaryButtonPress";
+           var hits = Physics.OverlapSphere(transform.position, 1f, 1 << LayerMask.NameToLayer("Item"));
            foreach (var hit in hits)
            {
                var item = hit.GetComponent<Item>();
                player.Inventory.Add(item);
-           }
+           } 
+       }
+   }
+
+   public void OnSecondaryButtonPress(InputAction.CallbackContext context)
+   {
+       if (context.performed)
+       {
+           text.text = "Right Click OnSecondaryButtonPress";
+           var go = primaryWeaponController.GetCurrent();
+           if (go != null)
+               go.GetComponent<IActivatable>()?.Activate();
+       }
+   }
+    /// <summary>
+    /// Itemi yerden alma
+    /// </summary>
+    /// <param name="context"></param>
+   public void OnSelect(InputAction.CallbackContext context)
+   {
+       if (context.performed)
+       {
+           // text.text = "Right Click OnSelect";
+           // var hits = Physics.OverlapSphere(transform.position, 1f, 1 << LayerMask.NameToLayer("Item"));
+           // foreach (var hit in hits)
+           // {
+           //     var item = hit.GetComponent<Item>();
+           //     player.Inventory.Add(item);
+           // } 
        }
    }
 
@@ -72,14 +92,20 @@ public class RightControllerActions : MonoBehaviour, XRIDefaultInputActions.IXRI
       // throw new System.NotImplementedException();
    }
    /// TODO "Equip a weapon videosunda player.Equipment var ama hatali unutma"
+   
+   /// <summary>
+   /// Itemi giyme 
+   /// </summary>
+   /// <param name="context"></param>
    public void OnActivate(InputAction.CallbackContext context)
    {
-       if (context.performed)
-       {
-           var go = primaryWeaponController.GetCurrent();
-           if (go != null)
-               go.GetComponent<IActivatable>()?.Activate();
-       }
+       // if (context.performed)
+       // {
+       //     text.text = "Right Click OnActivate";
+       //     var go = primaryWeaponController.GetCurrent();
+       //     if (go != null)
+       //         go.GetComponent<IActivatable>()?.Activate();
+       // }
    }
 
    public void OnActivateValue(InputAction.CallbackContext context)

@@ -32,7 +32,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Tags: []
   m_CatalogAsset: {fileID: 11400000}
---- !u!114 &-1094424249665947634
+--- !u!114 &-1062604119463888301
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,10 +42,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fcbd052539327467295d2009d33aa660, type: 3}
-  m_Name: Item_shield
+  m_Name: Item_shield_01
   m_EditorClassIdentifier: 
-  m_DisplayName: Shield
-  m_Key: shield
+  m_DisplayName: Shield_01
+  m_Key: shield_01
   m_Tags: []
   m_StaticPropertyKeys:
   - equipmentType
@@ -91,8 +91,51 @@ MonoBehaviour:
   - {fileID: -7306426153403211302}
   - {fileID: 7471737651646714376}
   - {fileID: 5458824096150429412}
-  - {fileID: -1094424249665947634}
-  - {fileID: 5643100743202097165}
+  - {fileID: -1062604119463888301}
+  - {fileID: 1986673389719070065}
+  - {fileID: 7629805611049191000}
+--- !u!114 &1986673389719070065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcbd052539327467295d2009d33aa660, type: 3}
+  m_Name: Item_sword_01
+  m_EditorClassIdentifier: 
+  m_DisplayName: Sword_01
+  m_Key: sword_01
+  m_Tags: []
+  m_StaticPropertyKeys:
+  - equipmentType
+  - sprite
+  - type
+  m_StaticPropertyValues:
+  - <type>k__BackingField: 3
+    m_ValueType:
+      longValue: 0
+    m_StringValue: primaryWeapon
+  - <type>k__BackingField: 4
+    m_ValueType:
+      longValue: 0
+    m_StringValue: sprites/sword_01
+  - <type>k__BackingField: 3
+    m_ValueType:
+      longValue: 0
+    m_StringValue: weapon
+  m_InitialAllocation: 0
+  m_IsStackableFlag: 0
+  m_InitialQuantityPerStack: 1
+  m_MutablePropertyKeys:
+  - physicalAttack
+  m_MutablePropertyDefaultValues:
+  - <type>k__BackingField: 0
+    m_ValueType:
+      longValue: 5
+    m_StringValue: 
 --- !u!114 &5458824096150429412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,48 +178,6 @@ MonoBehaviour:
   m_InitialQuantityPerStack: 1
   m_MutablePropertyKeys: []
   m_MutablePropertyDefaultValues: []
---- !u!114 &5643100743202097165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcbd052539327467295d2009d33aa660, type: 3}
-  m_Name: Item_sword
-  m_EditorClassIdentifier: 
-  m_DisplayName: Sword
-  m_Key: sword
-  m_Tags: []
-  m_StaticPropertyKeys:
-  - equipmentType
-  - sprite
-  - type
-  m_StaticPropertyValues:
-  - <type>k__BackingField: 3
-    m_ValueType:
-      longValue: 0
-    m_StringValue: primaryWeapon
-  - <type>k__BackingField: 4
-    m_ValueType:
-      longValue: 0
-    m_StringValue: sprites/sword_01
-  - <type>k__BackingField: 3
-    m_ValueType:
-      longValue: 0
-    m_StringValue: weapon
-  m_InitialAllocation: 0
-  m_IsStackableFlag: 0
-  m_InitialQuantityPerStack: 1
-  m_MutablePropertyKeys:
-  - physicalAttack
-  m_MutablePropertyDefaultValues:
-  - <type>k__BackingField: 0
-    m_ValueType:
-      longValue: 5
-    m_StringValue: 
 --- !u!114 &7471737651646714376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,3 +220,45 @@ MonoBehaviour:
     m_ValueType:
       longValue: 10
     m_StringValue: 
+--- !u!114 &7629805611049191000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcbd052539327467295d2009d33aa660, type: 3}
+  m_Name: Item_boots_01
+  m_EditorClassIdentifier: 
+  m_DisplayName: Boots_01
+  m_Key: boots_01
+  m_Tags: []
+  m_StaticPropertyKeys:
+  - equipmentType
+  - armor
+  - sprite
+  - type
+  m_StaticPropertyValues:
+  - <type>k__BackingField: 3
+    m_ValueType:
+      longValue: 0
+    m_StringValue: feet
+  - <type>k__BackingField: 4
+    m_ValueType:
+      longValue: 0
+    m_StringValue: ScriptableObjects/Armor/Boots_01
+  - <type>k__BackingField: 4
+    m_ValueType:
+      longValue: 0
+    m_StringValue: sprites/boots_01
+  - <type>k__BackingField: 3
+    m_ValueType:
+      longValue: 0
+    m_StringValue: armor
+  m_InitialAllocation: 0
+  m_IsStackableFlag: 0
+  m_InitialQuantityPerStack: 1
+  m_MutablePropertyKeys: []
+  m_MutablePropertyDefaultValues: []

@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class Skills : MonoBehaviour
+public class Skills : MonoBehaviour,ISavable
 {
     [SerializeField] private ParticleSystem levelUpVfx;
     [SerializeField] private AudioSource levelUpSfx;
-    private List<Skill> skills;
+    [SerializeField]private List<Skill> skills;
     public void Initialize()
     {
         skills = new List<Skill>
@@ -59,5 +60,30 @@ public class Skills : MonoBehaviour
     private void GainExperience(Enemy enemy)
     {
         this[SkillType.Combat].CurrentExperience += enemy.definition.experienceReward;
+    }
+
+    public object SaveData()
+    {
+        return new SkillsData()
+        {
+            skills =skills.Select(skill=> new SkillData()
+            {
+                requiredExperience =  skill.RequiredExperience,
+                currentExperience = skill.CurrentExperience,
+                level = skill.Level,
+                type= skill.Type
+            }).ToList() 
+        };
+    }
+
+    public void LoadData(object data)
+    {
+        SkillsData skillsData = (SkillsData) data;
+        skills = skillsData.skills.Select(skill => new Skill(
+            skill.currentExperience,
+            skill.level,
+            skill.requiredExperience,
+            skill.type
+        )).ToList();
     }
 }

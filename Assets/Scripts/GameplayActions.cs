@@ -51,7 +51,7 @@ public class GameplayActions : MonoBehaviour, PlayerControls.IGameplayActions
        // Debug.Log("OnFire 2Method");
         if (context.performed)
         {
-            Debug.Log("OnFire Method");
+         //   Debug.Log("OnFire Method");
             Vector2 mousePosition = controls.Gameplay.Move.ReadValue<Vector2>();
             Ray ray = mainCamera.ScreenPointToRay(mousePosition);
             RaycastHit hit;
@@ -89,7 +89,7 @@ public class GameplayActions : MonoBehaviour, PlayerControls.IGameplayActions
     {
         if (context.performed)
         {
-            Debug.Log("Show Radial menu");
+           // Debug.Log("Show Radial menu");
             UIManager.Instance.Show(Constants.UI.RADIAL_MENU);
         }
     }

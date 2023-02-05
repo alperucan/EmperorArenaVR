@@ -43,7 +43,7 @@ public enum PartType
     LegRight,
     LegLeft
 }
-    public class ModularCharacterController : MonoBehaviour
+    public class ModularCharacterController : MonoBehaviour,ISavable
     {
         [SerializeField] private Gender gender;
         [SerializeField] private Material material;
@@ -97,6 +97,31 @@ public enum PartType
             PartType.KneeAttachmentLeft
         };
 
+        public void Start()
+        {
+            if (activeParts.parts.Count==0)
+            {
+                foreach (PartType partType in Enum.GetValues(typeof(PartType)))
+                {
+                    activeParts.parts.Add(new ActivePart(partType,-1));
+                }
+                foreach (PartType partType in genderSpecificPartTypes)
+                {
+                    ActivatePart(partType,0);
+                }
+            }
+            else
+            {
+                foreach (var activePart in activeParts.parts)
+                {
+                    if(activePart.id != -1)
+                        ActivatePart(activePart.type,activePart.id);
+                }
+            }
+            ChangeColor("_Color_Hair",material.GetColor("_Color_Hair"));
+            ChangeColor("_Color_Skin" ,material.GetColor("_Color_Skin"));
+           
+        }
         private void OnEnable()
         {
             equipment.OnEquip += Equip;
@@ -189,13 +214,6 @@ public enum PartType
         [ContextMenu("Setup")]
         public void Setup()
         {
-            activeParts = new ActivePartMap();
-            activeParts.parts = new List<ActivePart>();
-
-            foreach (PartType partType in Enum.GetValues(typeof(PartType)))
-            {
-                activeParts.parts.Add(new ActivePart(partType,-1));
-            }
 
             Transform genderNeutralPartsParent = transform.Find("All_Gender_Parts");
             genderNeutralParts = new PartMap();
@@ -257,10 +275,6 @@ public enum PartType
                 new PartList(PartType.LegRight, GetParts(femalePartsParent.Find("Female_11_Leg_Right"))),
                 new PartList(PartType.LegLeft, GetParts(femalePartsParent.Find("Female_12_Leg_Left"))),
             };
-        }
-
-        public void Awake()
-        {
             foreach (PartList partList in maleParts)
             {
                 foreach (GameObject part in partList)
@@ -282,13 +296,9 @@ public enum PartType
                     part.SetActive(false);
                 }
             }
-
-            foreach (PartType partType in genderSpecificPartTypes)
-            {
-                ActivatePart(partType,0);
-            }
-            
         }
+
+        
 
         public void ActivatePart(PartType type, int id)
         {
@@ -342,5 +352,19 @@ public enum PartType
             }
 
             return parts;
+        }
+
+        public object SaveData()
+        {
+            return new ModularCharacterData()
+            {
+                activeParts = activeParts
+            };
+        }
+
+        public void LoadData(object data)
+        {
+            ModularCharacterData modularCharacterData = (ModularCharacterData)data;
+            activeParts = modularCharacterData.activeParts;
         }
     }

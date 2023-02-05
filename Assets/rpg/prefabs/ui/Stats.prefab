@@ -306,6 +306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: {fileID: 7439320776211669192}
   statName: wisdom
+  container: {fileID: 0}
   button: {fileID: 6884760520837192985}
 --- !u!1 &4037729686975504705
 GameObject:
@@ -473,6 +474,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: {fileID: 3767501646844357028}
   statName: charisma
+  container: {fileID: 0}
   button: {fileID: 820224101247405448}
 --- !u!1 &4646567795049950114
 GameObject:
@@ -763,6 +765,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: {fileID: 4646567795158757647}
   statName: magicAttack
+  container: {fileID: 0}
 --- !u!1 &4646567795097994261
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,6 +858,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: {fileID: 4646567795220742830}
   statName: dexterity
+  container: {fileID: 0}
   button: {fileID: 4646567795363047209}
 --- !u!1 &4646567795134791771
 GameObject:
@@ -1506,6 +1510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: {fileID: 4646567795270291241}
   statName: strength
+  container: {fileID: 0}
   button: {fileID: 4646567795398082052}
 --- !u!1 &4646567795331820321
 GameObject:
@@ -2110,6 +2115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: {fileID: 4646567796750117223}
   statName: constitution
+  container: {fileID: 0}
   button: {fileID: 4646567796600002587}
 --- !u!1 &4646567795465707361
 GameObject:
@@ -3514,10 +3520,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 0}
+  skills: {fileID: 0}
   statParent: {fileID: 4646567796026175892}
-  primaryStatParent: {fileID: 4646567795439884656}
   dynamicStatParent: {fileID: 4655722935349028520}
-  close: {fileID: 4646567796400647176}
+  closeButton: {fileID: 4646567796400647176}
+  availablePoints: {fileID: 4646567796811950922}
+  combatLevel: {fileID: 0}
 --- !u!1 &4646567796116914067
 GameObject:
   m_ObjectHideFlags: 0
@@ -4328,6 +4336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: {fileID: 4646567796417115692}
   statName: physicalDefense
+  container: {fileID: 0}
 --- !u!1 &4646567796579165046
 GameObject:
   m_ObjectHideFlags: 0
@@ -4418,9 +4427,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5211eac5da1c455a8a4b417472d2bed8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: {fileID: 4646567795758674760}
-  statName: mana
-  currentValue: {fileID: 4646567795750913081}
+  value: {fileID: 4646567795331820326}
+  statName: health
+  container: {fileID: 0}
+  currentValue: {fileID: 4646567796116914064}
 --- !u!1 &4646567796600002581
 GameObject:
   m_ObjectHideFlags: 0
@@ -4800,6 +4810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: {fileID: 4646567795057684813}
   statName: magicDefense
+  container: {fileID: 0}
 --- !u!1 &4646567796750117217
 GameObject:
   m_ObjectHideFlags: 0
@@ -5435,6 +5446,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: {fileID: 4646567796321546152}
   statName: physicalAttack
+  container: {fileID: 0}
 --- !u!1 &4646567796965229614
 GameObject:
   m_ObjectHideFlags: 0
@@ -5527,6 +5539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: {fileID: 4646567795514003686}
   statName: intelligence
+  container: {fileID: 0}
   button: {fileID: 4646567795049950112}
 --- !u!1 &4646567796981705987
 GameObject:
@@ -5692,9 +5705,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5211eac5da1c455a8a4b417472d2bed8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: {fileID: 4646567795331820326}
-  statName: health
-  currentValue: {fileID: 4646567796116914064}
+  value: {fileID: 4646567795758674760}
+  statName: mana
+  container: {fileID: 0}
+  currentValue: {fileID: 4646567795750913081}
 --- !u!1 &4646567797063091971
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,66 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class Player : MonoBehaviour
+public class Player : Singleton<Player>,ISavable
 {
 
-    [SerializeField] private GameObject leftHandRayInteractor;
-    [SerializeField] private GameObject rightHandRayInteractor;
-    [SerializeField] private GameObject leftHandDirectInteractor;
-    [SerializeField] private GameObject rightHandDirectInteractor;
-    [SerializeField] private ActionBasedContinuousMoveProvider actionBasedContinuousMoveProvider;
-    [SerializeField] private ActionBasedContinuousTurnProvider actionBasedContinuousTurnProvider;
+    [SerializeField]public Inventory Inventory { get; private set; }
+    [SerializeField]public Equipment Equipment { get; private set; }
+    [SerializeField]public Stats Stats { get; private set; }
+    [SerializeField] public Skills Skills { get; private set; }
 
-    [SerializeField] private Transform rightHand;
-    [SerializeField] private Transform leftHand;
-    
-    public Inventory Inventory { get; private set; }
-    private void Awake()
+    public void Awake()
     {
         Inventory = GetComponent<Inventory>();
+        Equipment = GetComponent<Equipment>();
+        Stats = GetComponent<Stats>();
+        Skills = GetComponent<Skills>();
     }
 
-    private void OnEnable()
+    public object SaveData()
     {
-        UIManager.Instance.OnShowUI += EnableUIMode;
-        UIManager.Instance.OnHideUI += DisableUIMode;
+        return new PlayerData()
+        {
+            //x = transform.position.x,
+            //y = transform.position.y,
+            //z = transform.position.z, 
+            position = transform.position,
+            rotation = transform.rotation
+        };
     }
-    private void OnDisable()
+
+    public void LoadData(object data)
     {
-        UIManager.Instance.OnShowUI -= EnableUIMode;
-        UIManager.Instance.OnHideUI -= DisableUIMode;
-    }
-    private void EnableUIMode()
-    {
-        actionBasedContinuousMoveProvider.enabled = false;
-        actionBasedContinuousTurnProvider.enabled = false;
-        leftHandDirectInteractor.SetActive(false);
-        rightHandDirectInteractor.SetActive(false);
-        leftHandRayInteractor.SetActive(true);
-        rightHandRayInteractor.SetActive(true);
-        
-        leftHand.parent = leftHandRayInteractor.transform;
-        leftHand.localPosition = Vector3.zero;
-        leftHand.localRotation =Quaternion.Euler(-90,180,-90);
-        rightHand.parent = rightHandRayInteractor.transform;
-        rightHand.localPosition =Vector3.zero;
-        rightHand.localRotation=Quaternion.Euler(90,0,90);
-    }
-    private void DisableUIMode() 
-    {
-        actionBasedContinuousMoveProvider.enabled = true;
-        actionBasedContinuousTurnProvider.enabled = true;
-        leftHandRayInteractor.SetActive(false);
-        rightHandRayInteractor.SetActive(false);
-        leftHandDirectInteractor.SetActive(true);
-        rightHandDirectInteractor.SetActive(true);
-        
-        leftHand.parent = leftHandRayInteractor.transform;
-        leftHand.localPosition = Vector3.zero;
-        leftHand.localRotation =Quaternion.Euler(-90,180,-90);
-        rightHand.parent = rightHandRayInteractor.transform;
-        rightHand.localPosition =Vector3.zero;
-        rightHand.localRotation=Quaternion.Euler(90,0,90);
+        PlayerData playerData = (PlayerData)data;
        
+        transform.position = playerData.position;
+        transform.rotation = playerData.rotation;
     }
 }

@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelManager : MonoBehaviour
+public class LevelManager : MonoBehaviour,ISavable
 {
     public string currentSceneName;
     private void OnEnable()
@@ -18,8 +18,9 @@ public class LevelManager : MonoBehaviour
     }
     private void Start()
     {
-            
-        SceneManager.LoadScene(Constants.SCENE.CHARACTER_SELECTION, LoadSceneMode.Additive);
+        if (String.IsNullOrEmpty(currentSceneName))
+            currentSceneName = Constants.SCENE.CHARACTER_SELECTION;
+        SceneManager.LoadScene(currentSceneName, LoadSceneMode.Additive);
     }
     private void OnSceneUnloaded(Scene scene)
     {
@@ -35,14 +36,33 @@ public class LevelManager : MonoBehaviour
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
-        switch (scene.name)
+        if(scene.name == Constants.SCENE.BASE || scene.name == Constants.SCENE.VR_BASE)
+            return;
+        currentSceneName = scene.name;
+        switch (currentSceneName)
         {
             case Constants.SCENE.CHARACTER_SELECTION:
                 UIManager.Instance.Show(Constants.UI.CHARACTER_SELECTION);
+                break;
+            case Constants.SCENE.TUTORIAL:
                 break;
             default:
                     
                 break;
         }
+    }
+
+    public object SaveData()
+    {
+        return new LevelData
+        {
+            currentSceneName = currentSceneName
+        };
+    }
+
+    public void LoadData(object data)
+    {
+        LevelData levelData = (LevelData)data;
+        currentSceneName = levelData.currentSceneName;
     }
 }

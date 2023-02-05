@@ -123,4 +123,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fca29c575120db488f32ab1582aabc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  definitionKey: 
+  definitionKey: shield_01
