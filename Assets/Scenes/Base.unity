@@ -641,6 +641,11 @@ PrefabInstance:
       propertyPath: skills
       value: 
       objectReference: {fileID: 551469954}
+    - target: {fileID: 3859500456152501228, guid: cccd9cfff2beb4cc4b2216476dfedae5,
+        type: 3}
+      propertyPath: combatLevel
+      value: 
+      objectReference: {fileID: 1215579964}
     - target: {fileID: 4646567795080903621, guid: cccd9cfff2beb4cc4b2216476dfedae5,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -1262,7 +1267,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 373802548}
-  m_LocalRotation: {x: 0.39994577, y: 0.030196695, z: -0.013185314, w: 0.91594636}
+  m_LocalRotation: {x: 0.39994574, y: 0.030196672, z: -0.013185301, w: 0.9159464}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -12843,6 +12848,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e580cfef19654fc39d4284eee9432b09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats: []
 --- !u!195 &551468508
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -15551,6 +15557,18 @@ Transform:
   m_Father: {fileID: 338715452}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1215579964 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4646567796811950922, guid: cccd9cfff2beb4cc4b2216476dfedae5,
+    type: 3}
+  m_PrefabInstance: {fileID: 255233141}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1359498650
 PrefabInstance:
   m_ObjectHideFlags: 0
