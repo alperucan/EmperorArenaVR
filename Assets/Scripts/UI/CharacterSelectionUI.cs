@@ -129,13 +129,7 @@ public class CharacterSelectionUI : BaseUI
                    statValueTexts[i].text = $"{stats[statLabelTexts[i].text.ToLower()].BaseValue}";
                }
         }
-        /// <summary>
-        /// TODO Stats duzelince yap
-        /// </summary>
-        private void Start()
-        {
-           RandomizeStats();
-        }
+       
 
         private void NextFace()
         {
