@@ -25,9 +25,9 @@ public class UIManager : Singleton<UIManager>
             { Constants.UI.EQUIPMENT, equipmentUI },
             { Constants.UI.INVENTORY, inventoryUI },    
             { Constants.UI.STATS, statsUI },
-           { Constants.UI.MENU, menuUI },
+            { Constants.UI.MENU, menuUI },
             { Constants.UI.CHARACTER_SELECTION, characterSelectionUI },
-           { Constants.UI.RADIAL_MENU, radialMenu }
+            { Constants.UI.RADIAL_MENU, radialMenu }
         };
     }
 

@@ -20,6 +20,7 @@ public class Skills : MonoBehaviour,ISavable
     {
         foreach (var skill in skills)
         {
+            Debug.Log("level up");
             skill.OnLevelUp += LevelUp;
         }
         

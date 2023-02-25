@@ -21,7 +21,7 @@ public class GameplayActions : MonoBehaviour, PlayerControls.IGameplayActions
 
     private void OnEnable()
     {
-        Debug.Log("GameplayActions enable");
+        //Debug.Log("GameplayActions enable");
         if (controls == null)
         {
             controls = new PlayerControls();
@@ -34,7 +34,7 @@ public class GameplayActions : MonoBehaviour, PlayerControls.IGameplayActions
 
     private void OnDisable()
     {
-        Debug.Log("GameplayActions Disable");
+      // Debug.Log("GameplayActions Disable");
         controls.Gameplay.Disable();
         UIManager.Instance.OnShowUI += controls.Gameplay.Disable;
         UIManager.Instance.OnHideUI += controls.Gameplay.Enable;
@@ -74,7 +74,7 @@ public class GameplayActions : MonoBehaviour, PlayerControls.IGameplayActions
     {
         if (context.performed)
         {
-            Debug.Log("OnPickUp");
+           // Debug.Log("OnPickUp");
             //text.text = "OnSelect Right";
             var hits = Physics.OverlapSphere(transform.position, 0.5f, 1 << LayerMask.NameToLayer("Item"));
             foreach (var hit in hits)

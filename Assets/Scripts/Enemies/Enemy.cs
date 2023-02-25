@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
         private List<Stat> stats;
         
         private Animator animator;
-        private NavMeshAgent agent;
+       [SerializeField] private NavMeshAgent agent;
         public NavMeshAgent Agent => agent;
         private Transform target;
         public Transform Target => target;
@@ -46,7 +46,7 @@ public class Enemy : MonoBehaviour
         public DynamicStat health;
         public DynamicStat mana;
 
-        private Collider enemyCollider;
+        [SerializeField]  private Collider enemyCollider;
 
         private void Awake()
         {

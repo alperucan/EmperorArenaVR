@@ -5,12 +5,14 @@ using UnityEngine;
 public class FloatingTextPool : MonoBehaviour
 {
     [SerializeField] private Enemy enemy;
-    [SerializeField] private GameObject eperienceTextPrefab;
+    [SerializeField] private GameObject experienceTextPrefab;
     [SerializeField] private GameObject damageTextPrefab;
     [SerializeField] private float initialHeight = 1f;
-
+    [SerializeField] private int experienceReward;
+    
     private void OnEnable()
     {
+        experienceReward = enemy.definition.experienceReward;
         enemy.OnTakeDamage += ShowDamage;
         enemy.OnDied += ShowExperienceReward;
     }

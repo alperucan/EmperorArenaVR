@@ -56,10 +56,10 @@ public abstract class WeaponController : MonoBehaviour,ISavable
 
         private void EnableWeapon(int id)
         {
-            Debug.Log("Weapon Controller EnableWeapon1");
+           // Debug.Log("Weapon Controller EnableWeapon1");
             if (id != -1)
             {
-                Debug.Log("Weapon Controller EnableWeapon2");
+               // Debug.Log("Weapon Controller EnableWeapon2");
                 weapons[id].SetActive(true);
                 currentId = id;
             }

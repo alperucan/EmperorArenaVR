@@ -24,7 +24,7 @@ MonoBehaviour:
   enemyName: 
   health:
     name: health
-    baseValue: 1
+    baseValue: 5
   mana:
     name: mana
     baseValue: 100

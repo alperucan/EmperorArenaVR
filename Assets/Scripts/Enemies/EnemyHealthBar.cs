@@ -1,40 +1,60 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 
-public class EnemyHealthBar : BaseUI
-{
-    private Slider slider;
-    [SerializeField] private Enemy enemy;
-    protected override void Awake()
-    {
-        base.Awake();
-        slider = GetComponent<Slider>();
-    }
 
-    private void Start()
+    public class EnemyHealthBar : BaseUI
     {
-        slider.maxValue = enemy.health.Value;
-        enemy.health.OnChangedCurrentValue += Refresh;
-    }
-
-    private void OnDestroy()
-    {
-        enemy.health.OnChangedCurrentValue -= Refresh;
-    }
-
-    private void Refresh(DynamicStat dynamicStat)
-    {
-        if (dynamicStat.CurrentValue==0)
+        
+        [SerializeField] private Enemy enemy;
+        [SerializeField] private float delay = 10f;
+        private Slider slider;
+        private Coroutine coroutine;
+        
+        protected void Awake()
         {
+            base.Awake();
+            slider = GetComponent<Slider>();
+        }
+
+        private void Start()
+        {
+            slider.maxValue = enemy.health.Value;
+            enemy.OnTakeDamage += Refresh;
+        }
+
+        private void OnDestroy()
+        {
+            enemy.OnTakeDamage -= Refresh;
+        }
+        private void Refresh(int damage)
+        {
+            if (enemy.health.CurrentValue == 0)
+            {
+                Hide();
+            }
+            else
+            {
+                if (canvasGroup.alpha == 0)
+                {
+                    Show();    
+                }
+                else
+                {
+                    StopCoroutine(coroutine);
+                }
+
+                coroutine = StartCoroutine(Wait());
+                slider.value = enemy.health.CurrentValue;
+            }
+        }
+
+        private IEnumerator Wait()
+        {
+            yield return new WaitForSeconds(delay);
             Hide();
         }
-        else
-        {
-            slider.value = dynamicStat.CurrentValue;
-            Show();
-        }
-        
     }
-}
+

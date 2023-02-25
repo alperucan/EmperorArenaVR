@@ -34,12 +34,14 @@ public class StatsUI : BaseUI
 
         private void OnEnable()
         {
+            Debug.Log("[StatsUI]: enable");
             stats.OnChangePoints += ChangePoints;
             skills[SkillType.Combat].OnLevelUp += LevelUp;
         }
 
         private void OnDisable()
         {
+            Debug.Log("[StatsUI]: disable");
             stats.OnChangePoints -= ChangePoints;
             skills[SkillType.Combat].OnLevelUp -= LevelUp;
         }
