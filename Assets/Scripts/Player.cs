@@ -11,6 +11,7 @@ public class Player : Singleton<Player>,ISavable
     [SerializeField]public Stats Stats { get; private set; }
     [SerializeField] public Skills Skills { get; private set; }
 
+    public List<Quest> questList;
     public void Awake()
     {
         Inventory = GetComponent<Inventory>();

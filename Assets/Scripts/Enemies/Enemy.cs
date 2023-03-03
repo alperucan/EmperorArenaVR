@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 {
    public EnemyDefinition definition;
 
+        public string enemyName;
         private List<Stat> stats;
         
         private Animator animator;
@@ -174,6 +175,7 @@ public class Enemy : MonoBehaviour
         public void Die()
         {
             OnDied?.Invoke(this);
+            
             EventManager.Instance.EnemyDied(this);
         }
 
