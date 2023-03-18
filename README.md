@@ -6,7 +6,5 @@ CAREFULLY!!!!
 
 TODO LIST
 
-1.	RightControllerActions OnActivede player.Equipment duzeltilmeli
 
-2.	Build Settingste ->Physics ->Layer Collision Matrix-> Item Weapon arasi unchecklenmeli
  	
