@@ -133,6 +133,7 @@ public class CharacterSelectionUI : BaseUI
 
         private void NextFace()
         {
+            Debug.Log("Click");
             FaceId = modularCharacterController.GetGender() == Gender.Female
                 ? (FaceId + 1) % modularCharacterController.femaleParts[PartType.Head].parts.Length
                 : (FaceId + 1) % modularCharacterController.maleParts[PartType.Head].parts.Length;
@@ -211,7 +212,24 @@ public class CharacterSelectionUI : BaseUI
         private void Accept()
         {
             SceneManager.UnloadSceneAsync(Constants.SCENE.CHARACTER_SELECTION);
+            //SceneManager.LoadScene(Constants.SCENE.ARENAPC, LoadSceneMode.Additive);
+            if (Constants.modeID == 1)
+            {
+                SceneManager.LoadScene(Constants.SCENE.SANDBOXSCENE, LoadSceneMode.Additive);
+            }
+
+            if (Constants.modeID == 2)
+            {
+                // quest
+                SceneManager.LoadScene(Constants.SCENE.ARENAPC, LoadSceneMode.Additive);
+            }
+            
+        }
+        /*
+        private void Accept()
+        {
+            SceneManager.UnloadSceneAsync(Constants.SCENE.CHARACTER_SELECTION);
             SceneManager.LoadScene(Constants.SCENE.TUTORIAL, LoadSceneMode.Additive);
         }
-        
+        */
     }

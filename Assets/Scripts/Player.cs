@@ -1,17 +1,18 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class Player : Singleton<Player>,ISavable
 {
-
+    public event Action<int> OnTakeDamage;
     [SerializeField]public Inventory Inventory { get; private set; }
     [SerializeField]public Equipment Equipment { get; private set; }
     [SerializeField]public Stats Stats { get; private set; }
     [SerializeField] public Skills Skills { get; private set; }
 
-    public List<Quest> questList;
+    public Quest quest;
     public void Awake()
     {
         Inventory = GetComponent<Inventory>();

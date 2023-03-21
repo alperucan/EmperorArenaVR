@@ -19,13 +19,22 @@ public class LevelManager : MonoBehaviour,ISavable
     private void Start()
     {
         if (String.IsNullOrEmpty(currentSceneName))
-            currentSceneName = Constants.SCENE.CHARACTER_SELECTION;
+            //currentSceneName = Constants.SCENE.CHARACTER_SELECTION;
+            currentSceneName = Constants.SCENE.LoginScene;
         SceneManager.LoadScene(currentSceneName, LoadSceneMode.Additive);
+        
+        
     }
     private void OnSceneUnloaded(Scene scene)
     {
         switch (scene.name)
         {
+            case Constants.SCENE.LoginScene:
+              
+                break;
+            case Constants.SCENE.SANDBOXSCENE:
+              
+                break;
             case Constants.SCENE.CHARACTER_SELECTION:
                 UIManager.Instance.Hide();
                 break;
@@ -34,6 +43,7 @@ public class LevelManager : MonoBehaviour,ISavable
                 break;
         }
     }
+    /*
     private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
         if(scene.name == Constants.SCENE.BASE || scene.name == Constants.SCENE.VR_BASE)
@@ -45,6 +55,26 @@ public class LevelManager : MonoBehaviour,ISavable
                 UIManager.Instance.Show(Constants.UI.CHARACTER_SELECTION);
                 break;
             case Constants.SCENE.TUTORIAL:
+                break;
+            default:
+                    
+                break;
+        }
+    }*/
+    private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
+    {
+        if(scene.name == Constants.SCENE.BASE || scene.name == Constants.SCENE.VR_BASE)
+            return;
+        currentSceneName = scene.name;
+        switch (currentSceneName)
+        {
+            case Constants.SCENE.LoginScene:
+                Debug.Log("Scene name " +scene.name) ;
+                break;
+            case Constants.SCENE.CHARACTER_SELECTION:
+                UIManager.Instance.Show(Constants.UI.CHARACTER_SELECTION);
+                break;
+            case Constants.SCENE.ARENAPC:
                 break;
             default:
                     
