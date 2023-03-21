@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,7 +30,7 @@ using UnityEngine.UI;
         }
         private void Refresh(int damage)
         {
-            if (enemy.health.CurrentValue == 0)
+            if (player.Stats[StatType.HEALTH].Value == 0)
             {
                 Hide();
             }

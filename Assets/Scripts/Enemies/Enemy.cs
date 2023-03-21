@@ -175,7 +175,7 @@ public class Enemy : MonoBehaviour
         public void Die()
         {
             OnDied?.Invoke(this);
-            
+            Player.Instance.quest.goal.currentAmount++;
             EventManager.Instance.EnemyDied(this);
         }
 

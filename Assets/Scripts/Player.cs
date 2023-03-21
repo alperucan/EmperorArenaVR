@@ -6,7 +6,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Player : Singleton<Player>,ISavable
 {
-    public event Action<int> OnTakeDamage;
+
     [SerializeField]public Inventory Inventory { get; private set; }
     [SerializeField]public Equipment Equipment { get; private set; }
     [SerializeField]public Stats Stats { get; private set; }
