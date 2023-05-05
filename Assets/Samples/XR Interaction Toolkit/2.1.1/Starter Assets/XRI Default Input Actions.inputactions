@@ -576,6 +576,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Trigger Button Press",
+                    "type": "Button",
+                    "id": "9c43cec4-76eb-4d1e-a9ec-0d21d10ffaf6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -708,6 +717,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Secondary Button Press",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b012da17-c263-41ac-b88c-d93d8ff32220",
+                    "path": "<XRController>{RightHand}/triggerButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Trigger Button Press",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

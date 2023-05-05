@@ -598,6 +598,15 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Trigger Button Press"",
+                    ""type"": ""Button"",
+                    ""id"": ""9c43cec4-76eb-4d1e-a9ec-0d21d10ffaf6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -730,6 +739,17 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Secondary Button Press"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b012da17-c263-41ac-b88c-d93d8ff32220"",
+                    ""path"": ""<XRController>{RightHand}/triggerButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Trigger Button Press"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1575,6 +1595,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         m_XRIRightHand_HapticDevice = m_XRIRightHand.FindAction("Haptic Device", throwIfNotFound: true);
         m_XRIRightHand_PrimaryButtonPress = m_XRIRightHand.FindAction("Primary Button Press", throwIfNotFound: true);
         m_XRIRightHand_SecondaryButtonPress = m_XRIRightHand.FindAction("Secondary Button Press", throwIfNotFound: true);
+        m_XRIRightHand_TriggerButtonPress = m_XRIRightHand.FindAction("Trigger Button Press", throwIfNotFound: true);
         // XRI RightHand Interaction
         m_XRIRightHandInteraction = asset.FindActionMap("XRI RightHand Interaction", throwIfNotFound: true);
         m_XRIRightHandInteraction_Select = m_XRIRightHandInteraction.FindAction("Select", throwIfNotFound: true);
@@ -1935,6 +1956,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
     private readonly InputAction m_XRIRightHand_HapticDevice;
     private readonly InputAction m_XRIRightHand_PrimaryButtonPress;
     private readonly InputAction m_XRIRightHand_SecondaryButtonPress;
+    private readonly InputAction m_XRIRightHand_TriggerButtonPress;
     public struct XRIRightHandActions
     {
         private @XRIDefaultInputActions m_Wrapper;
@@ -1945,6 +1967,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         public InputAction @HapticDevice => m_Wrapper.m_XRIRightHand_HapticDevice;
         public InputAction @PrimaryButtonPress => m_Wrapper.m_XRIRightHand_PrimaryButtonPress;
         public InputAction @SecondaryButtonPress => m_Wrapper.m_XRIRightHand_SecondaryButtonPress;
+        public InputAction @TriggerButtonPress => m_Wrapper.m_XRIRightHand_TriggerButtonPress;
         public InputActionMap Get() { return m_Wrapper.m_XRIRightHand; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1972,6 +1995,9 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                 @SecondaryButtonPress.started -= m_Wrapper.m_XRIRightHandActionsCallbackInterface.OnSecondaryButtonPress;
                 @SecondaryButtonPress.performed -= m_Wrapper.m_XRIRightHandActionsCallbackInterface.OnSecondaryButtonPress;
                 @SecondaryButtonPress.canceled -= m_Wrapper.m_XRIRightHandActionsCallbackInterface.OnSecondaryButtonPress;
+                @TriggerButtonPress.started -= m_Wrapper.m_XRIRightHandActionsCallbackInterface.OnTriggerButtonPress;
+                @TriggerButtonPress.performed -= m_Wrapper.m_XRIRightHandActionsCallbackInterface.OnTriggerButtonPress;
+                @TriggerButtonPress.canceled -= m_Wrapper.m_XRIRightHandActionsCallbackInterface.OnTriggerButtonPress;
             }
             m_Wrapper.m_XRIRightHandActionsCallbackInterface = instance;
             if (instance != null)
@@ -1994,6 +2020,9 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                 @SecondaryButtonPress.started += instance.OnSecondaryButtonPress;
                 @SecondaryButtonPress.performed += instance.OnSecondaryButtonPress;
                 @SecondaryButtonPress.canceled += instance.OnSecondaryButtonPress;
+                @TriggerButtonPress.started += instance.OnTriggerButtonPress;
+                @TriggerButtonPress.performed += instance.OnTriggerButtonPress;
+                @TriggerButtonPress.canceled += instance.OnTriggerButtonPress;
             }
         }
     }
@@ -2309,6 +2338,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         void OnHapticDevice(InputAction.CallbackContext context);
         void OnPrimaryButtonPress(InputAction.CallbackContext context);
         void OnSecondaryButtonPress(InputAction.CallbackContext context);
+        void OnTriggerButtonPress(InputAction.CallbackContext context);
     }
     public interface IXRIRightHandInteractionActions
     {

@@ -69,7 +69,17 @@ public class RightControllerActions : MonoBehaviour, XRIDefaultInputActions.IXRI
                go.GetComponent<IActivatable>()?.Activate();
        }
    }
-    /// <summary>
+
+   public void OnTriggerButtonPress(InputAction.CallbackContext context)
+   {
+       if (context.performed)
+       {
+           
+           
+       }
+   }
+
+   /// <summary>
     /// Itemi yerden alma
     /// </summary>
     /// <param name="context"></param>
