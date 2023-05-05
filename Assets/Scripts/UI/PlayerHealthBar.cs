@@ -7,7 +7,7 @@ using UnityEngine.UI;
     public class PlayerHealthBar : BaseUI
     {
           
-        [SerializeField] private Player player;
+       /* [SerializeField] private Player player;
         [SerializeField] private float delay = 10f;
         private Slider slider;
         private Coroutine coroutine;
@@ -54,5 +54,5 @@ using UnityEngine.UI;
         {
             yield return new WaitForSeconds(delay);
             Hide();
-        }
+        }*/
     }
