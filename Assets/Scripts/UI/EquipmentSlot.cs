@@ -10,12 +10,12 @@ public class EquipmentSlot : BaseSlot
         base.Awake();
         // player click on a item UnUequip item
         
-        button.onClick.AddListener(delegate { EventManager.Instance.UnEquip(inventoryItem); });
-         // button.onClick.AddListener(delegate
-         // {
-         //     if (inventoryItem != null)
-         //         equipment.UnEquip(inventoryItem);
-         // });
+        //button.onClick.AddListener(delegate { EventManager.Instance.UnEquip(inventoryItem); });
+         button.onClick.AddListener(delegate
+         {
+            if (inventoryItem != null)
+                 equipment.UnEquip(inventoryItem);
+         });
         
     }
 }

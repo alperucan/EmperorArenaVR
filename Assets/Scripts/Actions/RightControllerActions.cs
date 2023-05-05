@@ -74,8 +74,10 @@ public class RightControllerActions : MonoBehaviour, XRIDefaultInputActions.IXRI
    {
        if (context.performed)
        {
-           
-           
+           var go = GameObject.FindGameObjectWithTag("Staff").GetComponent<FireStaff>();
+           if(go!=null)
+               go.throwFireball();
+
        }
    }
 
