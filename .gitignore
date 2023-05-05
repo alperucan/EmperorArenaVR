@@ -66,7 +66,13 @@ crashlytics-build.properties
 
 # Packed Addressables
 /[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
-/[Aa]ssets/[Uu]nnecesry/*
+
+/[Aa]ssets/HQ Battle Arena
+/[Aa]ssets/CasualGameSounds
+/[Aa]ssets/PolygonAdventure
+/[Aa]ssets/PolygonFantasyHeroCharacters
+/[Aa]ssets/PolygonStarter
+
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
