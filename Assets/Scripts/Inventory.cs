@@ -54,6 +54,7 @@ public class Inventory : MonoBehaviour,ISavable
 
     private void Add(InventoryItem inventoryItem)
     {
+        
         items.Add(inventoryItem);
         OnItemAddedToInventory?.Invoke(inventoryItem);
     }

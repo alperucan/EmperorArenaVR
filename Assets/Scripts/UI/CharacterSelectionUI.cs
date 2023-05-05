@@ -48,6 +48,7 @@ public class CharacterSelectionUI : BaseUI
         
         
         private int hairId;
+
         public int HairId
         {
             get { return this.hairId; }

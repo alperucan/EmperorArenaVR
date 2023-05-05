@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -5090,6 +5090,10 @@ PrefabInstance:
     - target: {fileID: 1588895830433058, guid: ddc4cd0622acc4847817cc15268b4a19, type: 3}
       propertyPath: m_Layer
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1588895830433058, guid: ddc4cd0622acc4847817cc15268b4a19, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1595597176900030, guid: ddc4cd0622acc4847817cc15268b4a19, type: 3}
       propertyPath: m_Layer
@@ -12950,6 +12954,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd9124d3525a5ba4eaebf52d17caa38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  quest:
+    isActive: 0
+    title: 
+    description: 
+    expReward: 0
+    goldReward: 0
+    goal:
+      goalType: 0
+      requiredAmount: 0
+      currentAmount: 0
+      requiredWave: 3
+      currentWave: 0
 --- !u!95 &551469953 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 95241917264262668, guid: ddc4cd0622acc4847817cc15268b4a19,
@@ -16550,7 +16566,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1717878747
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16738,7 +16754,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1900617914}
-  m_LocalRotation: {x: 0.43295354, y: 0.02969783, z: -0.014273515, w: 0.9008139}
+  m_LocalRotation: {x: 0.43295354, y: 0.029697796, z: -0.0142735, w: 0.9008139}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
