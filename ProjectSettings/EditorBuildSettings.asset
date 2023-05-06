@@ -9,18 +9,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Base.unity
     guid: ce35bcc0328147349a9b02e5a1c5cdba
   - enabled: 1
-    path: Assets/Scenes/LoginScene.unity
-    guid: c753b5eb6507a5e46a0197213a10ad48
-  - enabled: 1
     path: Assets/Scenes/VR Base.unity
     guid: 8a993e80eb5103d40ae61429d59be9fe
+  - enabled: 1
+    path: Assets/Scenes/LoginScene.unity
+    guid: c753b5eb6507a5e46a0197213a10ad48
   - enabled: 1
     path: Assets/Scenes/Character Selection.unity
     guid: f51a0aef5cb3e494ab82b9101f11f40a
   - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: 5c54fe9000d744744b7c181573364a04
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ArenaPC.unity
     guid: 1421ab6bc8b989241bdf2679d077b351
   - enabled: 1

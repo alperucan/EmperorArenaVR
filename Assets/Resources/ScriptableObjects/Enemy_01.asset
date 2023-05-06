@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseStats:
   - name: physicalAttack
-    baseValue: 0
+    baseValue: 10
   - name: magicAttack
     baseValue: 0
   - name: physicalDefense
