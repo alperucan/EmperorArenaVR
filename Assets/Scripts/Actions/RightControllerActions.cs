@@ -72,13 +72,13 @@ public class RightControllerActions : MonoBehaviour, XRIDefaultInputActions.IXRI
 
    public void OnTriggerButtonPress(InputAction.CallbackContext context)
    {
-       if (context.performed)
+       /*if (context.performed)
        {
            var go = GameObject.FindGameObjectWithTag("Staff").GetComponent<FireStaff>();
            if(go!=null)
                go.throwFireball();
 
-       }
+       }*/
    }
 
    /// <summary>
