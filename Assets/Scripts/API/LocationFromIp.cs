@@ -103,18 +103,6 @@ using Newtonsoft.Json;
                 var json = webClient.DownloadString($"http://api.weatherapi.com/v1/current.json?key={apiKey}&q={location}&aqi=no");
                 return JsonConvert.DeserializeObject<WeatherInfo>(json);
             }
-            
-            /*using (var httpClient = new  System.Net.Http.HttpClient())
-            {
-                var response = await httpClient.GetAsync(apiUrl);
-                if (response.IsSuccessStatusCode)
-                {
-                    var json = await response.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<WeatherInfo>(json);
-                }
-
-                return null;
-            }*/
         }
         
     }

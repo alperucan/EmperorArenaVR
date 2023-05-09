@@ -16,7 +16,7 @@
     private long time;
 
     private static bool instanceExists;
-    public Discord.Discord discord;
+    //public Discord.Discord discord;
 
     void Awake() 
     {
@@ -35,7 +35,7 @@
     void Start()
     {
         // Log in with the Application ID
-        discord = new Discord.Discord(applicationID, (System.UInt64)Discord.CreateFlags.NoRequireDiscord);
+        //discord = new Discord.Discord(applicationID, (System.UInt64)Discord.CreateFlags.NoRequireDiscord);
 
         pos = GameObject.FindWithTag("Player").GetComponent<Transform>();
        // rb = GameObject.FindWithTag("Player").GetComponent<Rigidbody>();
@@ -47,14 +47,14 @@
     void Update()
     {
         // Destroy the GameObject if Discord isn't running
-        try
+        /*try
         {
             discord.RunCallbacks();
         }
         catch
         {
             Destroy(gameObject);
-        }
+        }*/
     }
 
     void LateUpdate() 
@@ -65,7 +65,7 @@
     void UpdateStatus()
     {
         // Update Status every frame
-        try
+        /*try
         {
             //Debug.LogWarning("dc deneme");
             var activityManager = discord.GetActivityManager();
@@ -96,6 +96,6 @@
             Debug.Log("Faill to connect DC API");
             // If updating the status fails, Destroy the GameObject
             Destroy(gameObject);
-        }
+        }*/
     }
 }
