@@ -209,7 +209,8 @@ public class CharacterSelectionUI : BaseUI
             }
         }
 
-        /*private void Accept()
+        
+        private void Accept()
         {
             SceneManager.UnloadSceneAsync(Constants.SCENE.CHARACTER_SELECTION);
             //SceneManager.LoadScene(Constants.SCENE.ARENAPC, LoadSceneMode.Additive);
@@ -224,12 +225,13 @@ public class CharacterSelectionUI : BaseUI
                 SceneManager.LoadScene(Constants.SCENE.ARENAPC, LoadSceneMode.Additive);
             }
             
-        }*/
+        }
         
+        /*
         private void Accept()
         {
             SceneManager.UnloadSceneAsync(Constants.SCENE.CHARACTER_SELECTION);
             SceneManager.LoadScene(Constants.SCENE.SANDBOXSCENE, LoadSceneMode.Additive);
         }
-        
+        */
     }

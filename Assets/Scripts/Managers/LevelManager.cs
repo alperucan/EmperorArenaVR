@@ -19,8 +19,8 @@ public class LevelManager : MonoBehaviour,ISavable
     private void Start()
     {
         if (String.IsNullOrEmpty(currentSceneName))
-            currentSceneName = Constants.SCENE.CHARACTER_SELECTION;
-            //currentSceneName = Constants.SCENE.LoginScene;
+            //currentSceneName = Constants.SCENE.CHARACTER_SELECTION;
+            currentSceneName = Constants.SCENE.LoginScene;
         SceneManager.LoadScene(currentSceneName, LoadSceneMode.Additive);
         
         
@@ -30,7 +30,6 @@ public class LevelManager : MonoBehaviour,ISavable
         switch (scene.name)
         {
             case Constants.SCENE.LoginScene:
-              
                 break;
             case Constants.SCENE.SANDBOXSCENE:
               
@@ -68,9 +67,9 @@ public class LevelManager : MonoBehaviour,ISavable
         currentSceneName = scene.name;
         switch (currentSceneName)
         {
-           // case Constants.SCENE.LoginScene:
-              //  Debug.Log("Scene name " +scene.name) ;
-               // break;
+            case Constants.SCENE.LoginScene:
+               Debug.Log("Scene name " +scene.name) ;
+                break;
             case Constants.SCENE.CHARACTER_SELECTION:
                 UIManager.Instance.Show(Constants.UI.CHARACTER_SELECTION);
                 break;

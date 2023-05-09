@@ -10,7 +10,7 @@ public class FireStaff : MonoBehaviour
 {
    
     public GameObject fireballPrefab;
-
+    
     public float throwForce = 20f;
     private Vector3 currentPos;
     private bool isEquipped = false;
@@ -20,7 +20,7 @@ public class FireStaff : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+    
     }
     
     public void throwFireball()
