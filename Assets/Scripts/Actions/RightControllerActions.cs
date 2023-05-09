@@ -55,7 +55,13 @@ public class RightControllerActions : MonoBehaviour, XRIDefaultInputActions.IXRI
            {
                var item = hit.GetComponent<Item>();
                player.Inventory.Add(item);
-           } 
+           }
+
+           var go = primaryWeaponController.GetCurrent();
+           if (go != null )
+           {
+               go.GetComponent<FireStaff>().throwFireball(); 
+           }
        }
    }
 

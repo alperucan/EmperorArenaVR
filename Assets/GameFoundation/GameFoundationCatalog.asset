@@ -183,6 +183,7 @@ MonoBehaviour:
   - {fileID: 7818483421172271174}
   - {fileID: 4229760192774429171}
   - {fileID: 3631799346343491061}
+  - {fileID: 5385893518217160756}
 --- !u!114 &1986673389719070065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,6 +309,48 @@ MonoBehaviour:
   - <type>k__BackingField: 0
     m_ValueType:
       longValue: 10
+    m_StringValue: 
+--- !u!114 &5385893518217160756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcbd052539327467295d2009d33aa660, type: 3}
+  m_Name: Item_staff_01
+  m_EditorClassIdentifier: 
+  m_DisplayName: Staff
+  m_Key: staff_01
+  m_Tags: []
+  m_StaticPropertyKeys:
+  - equipmentType
+  - sprite
+  - type
+  m_StaticPropertyValues:
+  - <type>k__BackingField: 3
+    m_ValueType:
+      longValue: 0
+    m_StringValue: primaryWeapon
+  - <type>k__BackingField: 4
+    m_ValueType:
+      longValue: 0
+    m_StringValue: 
+  - <type>k__BackingField: 3
+    m_ValueType:
+      longValue: 0
+    m_StringValue: weapon
+  m_InitialAllocation: 0
+  m_IsStackableFlag: 0
+  m_InitialQuantityPerStack: 1
+  m_MutablePropertyKeys:
+  - physicalAttack
+  m_MutablePropertyDefaultValues:
+  - <type>k__BackingField: 0
+    m_ValueType:
+      longValue: 5
     m_StringValue: 
 --- !u!114 &5458824096150429412
 MonoBehaviour:
